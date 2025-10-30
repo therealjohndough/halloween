@@ -1,0 +1,235 @@
+/**
+ * Age Gate Styles
+ * NYS Compliant Cannabis Age Verification
+ */
+
+.age-gate-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.age-gate-modal {
+    background: white;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.age-gate-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.age-gate-logo {
+    margin-bottom: 2rem;
+}
+
+.age-gate-logo img {
+    max-height: 60px;
+    width: auto;
+}
+
+.age-gate-logo h1 {
+    color: #f15b27;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.age-gate-message h2 {
+    color: #000;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.age-gate-message p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.age-gate-form {
+    margin: 2rem 0;
+}
+
+.birth-date-input {
+    margin-bottom: 2rem;
+}
+
+.birth-date-input label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.birth-date-input input {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.birth-date-input input:focus {
+    outline: none;
+    border-color: #f15b27;
+    box-shadow: 0 0 0 3px rgba(241, 91, 39, 0.1);
+}
+
+.age-gate-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.age-gate-actions .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.age-verify-btn {
+    background: #f15b27;
+    color: white;
+    border-color: #f15b27;
+}
+
+.age-verify-btn:hover {
+    background: #000;
+    border-color: #000;
+}
+
+.age-exit-btn {
+    background: transparent;
+    color: #666;
+    border-color: #ddd;
+}
+
+.age-exit-btn:hover {
+    background: #f5f5f5;
+    color: #000;
+}
+
+.age-gate-compliance {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.age-gate-compliance p {
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.age-gate-privacy {
+    margin-top: 1rem;
+}
+
+.age-gate-privacy a {
+    color: #f15b27;
+    text-decoration: none;
+}
+
+.age-gate-privacy a:hover {
+    text-decoration: underline;
+}
+
+.resource-links {
+    margin: 2rem 0;
+}
+
+.resource-links p {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.resource-links .btn {
+    background: #54a5db;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.close-modal-btn {
+    background: transparent;
+    color: #666;
+    border: 2px solid #ddd;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Loading state */
+.age-gate-form.loading .age-verify-btn {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.age-gate-form.loading .age-verify-btn::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 0.5rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    .age-gate-content {
+        padding: 1.5rem;
+    }
+    
+    .age-gate-actions {
+        flex-direction: column;
+    }
+    
+    .age-gate-actions .btn {
+        width: 100%;
+    }
+}

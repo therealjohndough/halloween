@@ -1,0 +1,423 @@
+<?php
+/**
+ * Skyworld Cannabis Theme Functions
+ * 
+ * Handles theme setup, ACF fields, enqueues, and age gate integration
+ */
+
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+/**
+ * Theme Setup
+ */
+function skyworld_theme_setup() {
+    // Add theme support
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_theme_support('custom-logo');
+    add_theme_support('html5', array(
+        'search-form',
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'caption',
+    ));
+    
+    // Register menus
+    register_nav_menus(array(
+        'primary' => __('Primary Menu', 'skyworld-cannabis'),
+        'footer' => __('Footer Menu', 'skyworld-cannabis'),
+    ));
+    
+    // Image sizes
+    add_image_size('hero-slide', 1920, 1080, true);
+    add_image_size('product-thumb', 400, 400, true);
+    add_image_size('press-logo', 200, 100, false);
+}
+
+/**
+ * Fallback menu for primary navigation
+ */
+function skyworld_fallback_menu() {
+    echo '<ul class="nav-menu mobile-nav">';
+    echo '<li><a href="/strains">Our Flower</a></li>';
+    echo '<li><a href="/products">Products</a></li>';
+    echo '<li><a href="/our-story">Our Story</a></li>';
+    echo '<li><a href="/store-locator">Where to Find Us</a></li>';
+    echo '<li><a href="/contact">Contact</a></li>';
+    echo '</ul>';
+}
+add_action('after_setup_theme', 'skyworld_theme_setup');
+
+/**
+ * Enqueue Scripts and Styles
+ */
+function skyworld_enqueue_assets() {
+    // Main stylesheet
+    wp_enqueue_style(
+        'skyworld-style',
+        get_stylesheet_uri(),
+        array(),
+        wp_get_theme()->get('Version')
+    );
+    
+    // Main CSS
+    wp_enqueue_style(
+        'skyworld-main',
+        get_template_directory_uri() . '/assets/css/main.css',
+        array('skyworld-style'),
+        wp_get_theme()->get('Version')
+    );
+    
+    // Main JavaScript
+    wp_enqueue_script(
+        'skyworld-main',
+        get_template_directory_uri() . '/assets/js/main.js',
+        array('jquery'),
+        wp_get_theme()->get('Version'),
+        true
+    );
+    
+    // Localize script for AJAX
+    wp_localize_script('skyworld-main', 'skyworld_ajax', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('skyworld_nonce'),
+    ));
+}
+add_action('wp_enqueue_scripts', 'skyworld_enqueue_assets');
+
+/**
+ * Register Custom Post Types
+ */
+function skyworld_register_post_types() {
+    // Strains CPT
+    register_post_type('strains', array(
+        'labels' => array(
+            'name' => __('Strains', 'skyworld-cannabis'),
+            'singular_name' => __('Strain', 'skyworld-cannabis'),
+            'menu_name' => __('Strains', 'skyworld-cannabis'),
+            'add_new' => __('Add New Strain', 'skyworld-cannabis'),
+            'add_new_item' => __('Add New Strain', 'skyworld-cannabis'),
+            'edit_item' => __('Edit Strain', 'skyworld-cannabis'),
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-carrot',
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'show_in_rest' => true,
+        'rewrite' => array('slug' => 'strains'),
+    ));
+    
+    // Products CPT
+    register_post_type('products', array(
+        'labels' => array(
+            'name' => __('Products', 'skyworld-cannabis'),
+            'singular_name' => __('Product', 'skyworld-cannabis'),
+            'menu_name' => __('Products', 'skyworld-cannabis'),
+            'add_new' => __('Add New Product', 'skyworld-cannabis'),
+            'add_new_item' => __('Add New Product', 'skyworld-cannabis'),
+            'edit_item' => __('Edit Product', 'skyworld-cannabis'),
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-products',
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'show_in_rest' => true,
+        'rewrite' => array('slug' => 'products'),
+    ));
+}
+add_action('init', 'skyworld_register_post_types');
+
+/**
+ * Register Taxonomies
+ */
+function skyworld_register_taxonomies() {
+    // Product Type taxonomy
+    register_taxonomy('product_type', array('products'), array(
+        'labels' => array(
+            'name' => __('Product Types', 'skyworld-cannabis'),
+            'singular_name' => __('Product Type', 'skyworld-cannabis'),
+        ),
+        'hierarchical' => true,
+        'public' => true,
+        'show_in_rest' => true,
+        'rewrite' => array('slug' => 'product-type'),
+    ));
+    
+    // Strain Type taxonomy
+    register_taxonomy('strain_type', array('strains'), array(
+        'labels' => array(
+            'name' => __('Strain Types', 'skyworld-cannabis'),
+            'singular_name' => __('Strain Type', 'skyworld-cannabis'),
+        ),
+        'hierarchical' => true,
+        'public' => true,
+        'show_in_rest' => true,
+        'rewrite' => array('slug' => 'strain-type'),
+    ));
+    
+    // Effects taxonomy
+    register_taxonomy('effects', array('strains', 'products'), array(
+        'labels' => array(
+            'name' => __('Effects', 'skyworld-cannabis'),
+            'singular_name' => __('Effect', 'skyworld-cannabis'),
+        ),
+        'hierarchical' => false,
+        'public' => true,
+        'show_in_rest' => true,
+        'rewrite' => array('slug' => 'effects'),
+    ));
+}
+add_action('init', 'skyworld_register_taxonomies');
+
+/**
+ * ACF Field Groups
+ */
+function skyworld_register_acf_fields() {
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
+    
+    // Homepage Fields
+    acf_add_local_field_group(array(
+        'key' => 'group_homepage',
+        'title' => 'Homepage Sections',
+        'fields' => array(
+            // Hero Section
+            array(
+                'key' => 'field_hero_slides',
+                'label' => 'Hero Slides',
+                'name' => 'hero_slides',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_slide_title',
+                        'label' => 'Slide Title',
+                        'name' => 'slide_title',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_slide_subtitle',
+                        'label' => 'Slide Subtitle',
+                        'name' => 'slide_subtitle',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_slide_media_type',
+                        'label' => 'Media Type',
+                        'name' => 'slide_media_type',
+                        'type' => 'select',
+                        'choices' => array(
+                            'image' => 'Image',
+                            'video' => 'Video',
+                        ),
+                        'default_value' => 'image',
+                    ),
+                    array(
+                        'key' => 'field_slide_image',
+                        'label' => 'Background Image',
+                        'name' => 'slide_image',
+                        'type' => 'image',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_slide_media_type',
+                                    'operator' => '==',
+                                    'value' => 'image',
+                                ),
+                            ),
+                        ),
+                    ),
+                    array(
+                        'key' => 'field_slide_video',
+                        'label' => 'Background Video',
+                        'name' => 'slide_video',
+                        'type' => 'file',
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => 'field_slide_media_type',
+                                    'operator' => '==',
+                                    'value' => 'video',
+                                ),
+                            ),
+                        ),
+                    ),
+                    array(
+                        'key' => 'field_slide_cta_text',
+                        'label' => 'CTA Text',
+                        'name' => 'slide_cta_text',
+                        'type' => 'text',
+                        'default_value' => 'Explore Our Flower',
+                    ),
+                    array(
+                        'key' => 'field_slide_cta_link',
+                        'label' => 'CTA Link',
+                        'name' => 'slide_cta_link',
+                        'type' => 'link',
+                    ),
+                ),
+                'min' => 1,
+                'max' => 5,
+                'layout' => 'block',
+            ),
+            
+            // Press Section
+            array(
+                'key' => 'field_press_logos',
+                'label' => 'Press Logos',
+                'name' => 'press_logos',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_press_logo',
+                        'label' => 'Logo',
+                        'name' => 'press_logo',
+                        'type' => 'image',
+                    ),
+                    array(
+                        'key' => 'field_press_name',
+                        'label' => 'Publication Name',
+                        'name' => 'press_name',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_press_link',
+                        'label' => 'Article Link',
+                        'name' => 'press_link',
+                        'type' => 'url',
+                    ),
+                ),
+                'min' => 3,
+                'max' => 6,
+                'layout' => 'block',
+            ),
+            
+            // Story Section
+            array(
+                'key' => 'field_story_title',
+                'label' => 'Our Story Title',
+                'name' => 'story_title',
+                'type' => 'text',
+                'default_value' => 'Our Story',
+            ),
+            array(
+                'key' => 'field_story_content',
+                'label' => 'Story Content',
+                'name' => 'story_content',
+                'type' => 'wysiwyg',
+            ),
+            array(
+                'key' => 'field_story_video',
+                'label' => 'Story Video',
+                'name' => 'story_video',
+                'type' => 'file',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'page_type',
+                    'operator' => '==',
+                    'value' => 'front_page',
+                ),
+            ),
+        ),
+    ));
+    
+    // Strain Fields
+    acf_add_local_field_group(array(
+        'key' => 'group_strain',
+        'title' => 'Strain Information',
+        'fields' => array(
+            array(
+                'key' => 'field_strain_description',
+                'label' => 'Description',
+                'name' => 'strain_description',
+                'type' => 'wysiwyg',
+            ),
+            array(
+                'key' => 'field_thc_percentage',
+                'label' => 'THC Percentage',
+                'name' => 'thc_percentage',
+                'type' => 'number',
+                'min' => 0,
+                'max' => 100,
+                'step' => 0.1,
+            ),
+            array(
+                'key' => 'field_cbd_percentage',
+                'label' => 'CBD Percentage',
+                'name' => 'cbd_percentage',
+                'type' => 'number',
+                'min' => 0,
+                'max' => 100,
+                'step' => 0.1,
+            ),
+            array(
+                'key' => 'field_strain_lineage',
+                'label' => 'Lineage',
+                'name' => 'strain_lineage',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_strain_effects',
+                'label' => 'Effects',
+                'name' => 'strain_effects',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_effect_name',
+                        'label' => 'Effect',
+                        'name' => 'effect_name',
+                        'type' => 'text',
+                    ),
+                ),
+                'min' => 3,
+                'max' => 6,
+                'layout' => 'table',
+            ),
+            array(
+                'key' => 'field_coa_file',
+                'label' => 'COA Document',
+                'name' => 'coa_file',
+                'type' => 'file',
+                'return_format' => 'array',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'strains',
+                ),
+            ),
+        ),
+    ));
+}
+add_action('acf/init', 'skyworld_register_acf_fields');
+
+/**
+ * Security: Disable file editing in admin
+ */
+define('DISALLOW_FILE_EDIT', true);
+
+/**
+ * Custom excerpt length
+ */
+function skyworld_excerpt_length($length) {
+    return 25;
+}
+add_filter('excerpt_length', 'skyworld_excerpt_length');
+
+/**
+ * Custom excerpt more
+ */
+function skyworld_excerpt_more($more) {
+    return '...';
+}
+add_filter('excerpt_more', 'skyworld_excerpt_more');
