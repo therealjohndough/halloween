@@ -45,7 +45,7 @@
 - Do not scaffold example code that won't compile or run.
 - Do not output secrets, tokens, or private keys. If asked, refuse.
 - Do not use `!important` unless documented justification.
-- **NEVER create fake strain names or product data. ALWAYS use authentic Skyworld data from the product inventory CSV files in Project Documents and Data Sources/. Real strains include: Stay Puft, Garlic Gravity, Sherb Cream Pie, Skyworld Wafflez, Dirt n Worms, White Apple Runtz, 41 G, Melted Strawberries, Triple Burger, Charmz, Superboof, Stay Melo, Gushcanna, Lemon Oreoz, Peanut Butter Gelato, Kept Secret - with their actual THC/CBD percentages, terpene profiles, and batch numbers.**
+- **NEVER create fake strain names, product data, or store locations. ALWAYS use authentic Skyworld data from the product inventory CSV files in Project Documents and Data Sources/. Real strains include: Stay Puft, Garlic Gravity, Sherb Cream Pie, Skyworld Wafflez, Dirt n Worms, White Apple Runtz, 41 G, Melted Strawberries, Triple Burger, Charmz, Superboof, Stay Melo, Gushcanna, Lemon Oreoz, Peanut Butter Gelato, Kept Secret - with their actual THC/CBD percentages, terpene profiles, and batch numbers. Store locations are managed exclusively via Agile Store Locator plugin.**
 
 
 ## Project Conventions
@@ -54,7 +54,7 @@
 - Relationships: strain ↔ products bidirectional; related products by shared strain.
 - CTAs: all product/strain pages lead to "Find near me" store locator, never direct sales or cart functionality.
 - Media: next-gen formats (WebP/AVIF), lazy loading, video short loops, optional 360° viewers.
-- Maps: Mapbox or Google Maps for store locator with retailer JSON data - primary conversion goal.
+- Maps: Agile Store Locator plugin handles all store/retailer data and mapping - primary conversion goal.
 - Env: `.env` for local only; never commit. Document required ENV keys in README.
 
 

@@ -63,8 +63,8 @@ wp eval-file wp-content/themes/skyworld-cannabis/import-scripts/image-manager.ph
 
 ### 6. Setup Store Locator
 ```bash
-# Import retailer locations
-wp eval-file wp-content/themes/skyworld-cannabis/import-scripts/store-locator.php
+# Store locations are managed via Agile Store Locator plugin
+# No import needed - configure stores directly in WordPress admin
 ```
 
 ## 📊 Data Structure
@@ -112,7 +112,7 @@ Store Locator (Conversion Goal)
 ## 🔧 Customization
 
 ### Adding New Retailers
-Edit `/assets/store-locations.json` or use the Agile Store Locator admin panel.
+Configure store locations using the Agile Store Locator admin panel in WordPress.
 
 ### COA Management
 Place PDF files in `/assets/coas/` named by batch number (e.g., `SW3725J-SP.pdf`).

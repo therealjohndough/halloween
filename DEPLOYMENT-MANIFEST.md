@@ -36,7 +36,7 @@ template-parts/
 assets/
 ├── main.css                  # Complete theme styles
 ├── main.js                   # JavaScript functionality
-├── store-locations.json     # NY retailer data
+├── (store locations managed via ASL plugin)
 ├── asl-custom.css           # Agile Store Locator styling
 └── coas/                    # COA PDF directory (32 files ready)
 ```
@@ -91,7 +91,7 @@ mu-plugins/
 
 ### ✅ Store Locator Integration
 - **Agile Store Locator plugin** compatibility
-- **6 NY retailer locations** with real data structure
+- **Store locations** managed via Agile Store Locator plugin
 - **Fallback functionality** if plugin not installed
 - **Conversion-optimized** as primary CTA
 
