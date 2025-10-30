@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - SkyWorld Cannabis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            width: 150px;
+            height: 40px;
+            background: #FF8C00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FF8C00;
+        }
+
+        /* Archive Hero */
+        .archive-hero {
+            padding: 150px 50px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .archive-hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            color: #FF8C00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .archive-hero p {
+            font-size: 18px;
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 40px 50px;
+            background: #0a0a0a;
+            border-bottom: 1px solid #1a1a1a;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            color: #aaa;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-right: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: transparent;
+            color: #aaa;
+            border: 2px solid #333;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #FF8C00;
+            color: #000;
+            border-color: #FF8C00;
+        }
+
+        .product-count {
+            color: #666;
+            font-size: 14px;
+            margin-left: auto;
+        }
+
+        /* Products Archive */
+        .products-archive {
+            padding: 80px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: #0a0a0a;
+            border: 2px solid #1a1a1a;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #FF8C00;
+            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #FF8C00;
+            color: #000;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FF8C00;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-effects {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .effect-tag {
+            padding: 5px 12px;
+            background: rgba(255, 140, 0, 0.1);
+            border: 1px solid #FF8C00;
+            color: #FF8C00;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 12px;
+        }
+
+        .product-description {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .view-product-btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            color: #FF8C00;
+            border: 2px solid #FF8C00;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .view-product-btn:hover {
+            background: #FF8C00;
+            color: #000;
+        }
+
+        /* Load More */
+        .load-more-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .load-more-btn {
+            padding: 18px 50px;
+            background: transparent;
+            color: #FF8C00;
+            border: 2px solid #FF8C00;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .load-more-btn:hover {
+            background: #FF8C00;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 50px 30px;
+            background: #000;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .footer-left {
+            text-align: left;
+        }
+
+        .footer-left p {
+            color: #666;
+            font-size: 11px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer-left .company {
+            color: #aaa;
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        .footer-center {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .badge {
+            width: 100px;
+            height: 100px;
+            background: #0a0a0a;
+            border: 2px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 10px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            color: #FF8C00;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #0a0a0a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .social-icon:hover {
+            background: #FF8C00;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #222;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .archive-hero {
+                padding: 120px 20px 60px;
+            }
+
+            .archive-hero h1 {
+                font-size: 42px;
+            }
+
+            .filter-section {
+                padding: 20px;
+            }
+
+            .filter-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .products-archive {
+                padding: 40px 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-left,
+            .footer-right {
+                text-align: center;
+            }
+
+            .footer-links,
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">SKYWORLD</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#locations">Locations</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Archive Hero -->
+    <section class="archive-hero">
+        <h1>Our Products</h1>
+        <p>Premium indoor cultivation from New York. Explore our curated selection of high-quality cannabis strains.</p>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <div class="filter-group">
+                <span class="filter-label">Filter by:</span>
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Indica</button>
+                <button class="filter-btn">Sativa</button>
+                <button class="filter-btn">Hybrid</button>
+            </div>
+            <div class="filter-group">
+                <span class="filter-label">Effect:</span>
+                <button class="filter-btn">Happy</button>
+                <button class="filter-btn">Relaxed</button>
+                <button class="filter-btn">Creative</button>
+                <button class="filter-btn">Energetic</button>
+            </div>
+            <span class="product-count">Showing 12 products</span>
+        </div>
+    </section>
+
+    <!-- Products Archive -->
+    <section class="products-archive">
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">New</span>
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Charmz</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Happy</span>
+                        <span class="effect-tag">Creative</span>
+                        <span class="effect-tag">Balanced</span>
+                    </div>
+                    <p class="product-description">Sweet berries with a citrusy, candy-like aroma. Bright, fruity flavors with lemon and cherry highlights.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Sundae Driver</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Relaxed</span>
+                        <span class="effect-tag">Happy</span>
+                        <span class="effect-tag">Calm</span>
+                    </div>
+                    <p class="product-description">Creamy, sweet notes with chocolate and fruity undertones. Smooth and indulgent experience.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">Popular</span>
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Gelato</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Euphoric</span>
+                        <span class="effect-tag">Creative</span>
+                        <span class="effect-tag">Uplifted</span>
+                    </div>
+                    <p class="product-description">Sweet dessert-like aroma with berry and citrus notes. A balanced high perfect for any time.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Purple Punch</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Sleepy</span>
+                        <span class="effect-tag">Relaxed</span>
+                        <span class="effect-tag">Peaceful</span>
+                    </div>
+                    <p class="product-description">Grape candy and blueberry muffin flavors. Perfect for unwinding after a long day.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Wedding Cake</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Relaxed</span>
+                        <span class="effect-tag">Happy</span>
+                        <span class="effect-tag">Euphoric</span>
+                    </div>
+                    <p class="product-description">Sweet, earthy vanilla notes with peppery undertones. A celebration in every puff.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">New</span>
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Blue Dream</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Uplifted</span>
+                        <span class="effect-tag">Creative</span>
+                        <span class="effect-tag">Energetic</span>
+                    </div>
+                    <p class="product-description">Sweet berry aroma with herbal notes. A balanced high perfect for daytime use.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">OG Kush</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Relaxed</span>
+                        <span class="effect-tag">Happy</span>
+                        <span class="effect-tag">Focused</span>
+                    </div>
+                    <p class="product-description">Earthy pine with woody undertones and hint of citrus. A classic strain done right.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Zkittlez</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Happy</span>
+                        <span class="effect-tag">Relaxed</span>
+                        <span class="effect-tag">Calm</span>
+                    </div>
+                    <p class="product-description">Tropical fruit medley with sweet grape undertones. Taste the rainbow.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">Popular</span>
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Sour Diesel</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Energetic</span>
+                        <span class="effect-tag">Uplifted</span>
+                        <span class="effect-tag">Creative</span>
+                    </div>
+                    <p class="product-description">Pungent diesel aroma with citrus notes. An energizing classic for productivity.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="product-card">
+                <div class="product-image">
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Cookies & Cream</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Relaxed</span>
+                        <span class="effect-tag">Happy</span>
+                        <span class="effect-tag">Giggly</span>
+                    </div>
+                    <p class="product-description">Sweet vanilla and earthy notes. A delicious hybrid for any occasion.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="product-card">
+                <div class="product-image">
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Northern Lights</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Sleepy</span>
+                        <span class="effect-tag">Relaxed</span>
+                        <span class="effect-tag">Peaceful</span>
+                    </div>
+                    <p class="product-description">Sweet and spicy with earthy undertones. A legendary indica for deep relaxation.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="product-card">
+                <div class="product-image">
+                    [Product Image]
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Jack Herer</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Energetic</span>
+                        <span class="effect-tag">Creative</span>
+                        <span class="effect-tag">Focused</span>
+                    </div>
+                    <p class="product-description">Piney, earthy aroma with hints of citrus. Perfect for daytime productivity.</p>
+                    <button class="view-product-btn">View Details</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More -->
+        <div class="load-more-section">
+            <button class="load-more-btn">Load More Products</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <p>NY LIC MFG: OCM-PROC-24-000030 | OCM-CULT-2023-000179</p>
+                    <p class="company">An SJR Horticulture Production</p>
+                </div>
+                <div class="footer-center">
+                    <div class="badge">CSL<br>BADGE</div>
+                    <div class="badge">NATIVE<br>CONNECTION</div>
+                    <div class="badge">GMP<br>CERTIFIED</div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-links">
+                        <a href="#">TERMS & CONDITIONS</a>
+                        <a href="#">PRIVACY POLICY</a>
+                        <a href="#">ACCESSIBILITY</a>
+                        <a href="#">PATENTS</a>
+                        <a href="#">CA RECALL</a>
+                    </div>
+                    <div class="social-icons">
+                        <div class="social-icon">📷</div>
+                        <div class="social-icon">f</div>
+                        <div class="social-icon">𝕏</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 SKYWORLD. A DREAMFIELDS BRAND</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -6,121 +6,134 @@
 
 get_header(); ?>
 
-<main class="strains-archive">
-    <div class="container">
-        <div class="archive-header">
-            <h1 class="archive-title">Our Strains</h1>
-            <p class="archive-description">
-                Discover our premium cannabis genetics, carefully cultivated for exceptional quality and unique characteristics.
-            </p>
-        </div>
+<?php get_header(); ?>
 
-        <!-- Filter Bar -->
-        <div class="strain-filters">
+<main id="main" class="site-main">
+    <!-- Archive Hero -->
+    <div class="archive-hero">
+        <h1>Our Premium Strains</h1>
+        <p>Hand-selected genetics delivering unmatched flavor, potency, and experience. Each strain cultivated with precision in our New York indoor facilities.</p>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <div class="filter-container">
             <div class="filter-group">
-                <label for="strain-type-filter">Strain Type:</label>
-                <select id="strain-type-filter" class="filter-select">
-                    <option value="">All Types</option>
-                    <option value="indica">Indica</option>
-                    <option value="sativa">Sativa</option>
-                    <option value="hybrid">Hybrid</option>
-                </select>
+                <span class="filter-label">Filter by:</span>
+                <button class="filter-btn active" data-filter="all">All Strains</button>
+                <button class="filter-btn" data-filter="indica">Indica</button>
+                <button class="filter-btn" data-filter="sativa">Sativa</button>
+                <button class="filter-btn" data-filter="hybrid">Hybrid</button>
             </div>
-            
-            <div class="filter-group">
-                <label for="strain-search">Search Strains:</label>
-                <input type="text" id="strain-search" placeholder="Search by name or genetics..." class="filter-input">
+            <div class="product-count">
+                Showing <?php echo $wp_query->found_posts; ?> strains
             </div>
         </div>
+    </div>
 
-        <!-- Strains Grid -->
-        <div class="strains-grid" id="strains-container">
-            <?php
-            $strains_query = new WP_Query([
-                'post_type' => 'strain',
-                'posts_per_page' => -1,
-                'post_status' => 'publish',
-                'orderby' => 'title',
-                'order' => 'ASC'
-            ]);
-
-            if ($strains_query->have_posts()) :
-                while ($strains_query->have_posts()) : $strains_query->the_post();
-                    $strain_types = wp_get_post_terms(get_the_ID(), 'strain_type');
-                    $strain_type = $strain_types ? $strain_types[0]->slug : '';
-                    $genetics = get_field('genetics');
-                    $related_products = get_field('related_products');
-                    $product_count = $related_products ? count($related_products) : 0;
-                    ?>
-                    <article class="strain-card" data-strain-type="<?php echo esc_attr($strain_type); ?>">
-                        <div class="strain-card-inner">
+    <!-- Products Archive -->
+    <div class="products-archive">
+        <div class="products-grid">
+            <?php if (have_posts()) : ?>
+                <?php while (have_posts()) : the_post(); ?>
+                    <article id="strain-<?php the_ID(); ?>" <?php post_class('product-card'); ?>>
+                        <div class="product-image">
                             <?php if (has_post_thumbnail()) : ?>
-                                <div class="strain-image">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <?php the_post_thumbnail('medium'); ?>
-                                    </a>
-                                </div>
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_post_thumbnail('large'); ?>
+                                </a>
+                            <?php else : ?>
+                                <span>Image Coming Soon</span>
                             <?php endif; ?>
                             
-                            <div class="strain-content">
-                                <div class="strain-meta">
-                                    <?php if ($strain_types) : ?>
-                                        <span class="strain-type strain-type-<?php echo esc_attr($strain_type); ?>">
-                                            <?php echo esc_html($strain_types[0]->name); ?>
-                                        </span>
-                                    <?php endif; ?>
-                                </div>
+                            <?php if (function_exists('get_field')) : ?>
+                                <?php $strain_type = get_field('strain_type'); ?>
+                                <?php if ($strain_type) : ?>
+                                    <div class="product-badge"><?php echo esc_html($strain_type); ?></div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
+                        
+                        <div class="product-info">
+                            <h2 class="product-name">
+                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                            </h2>
+                            
+                            <?php if (function_exists('get_field')) : ?>
+                                <?php
+                                $genetics = get_field('genetics');
+                                $thc_content = get_field('thc_content');
+                                $cbd_content = get_field('cbd_content');
+                                $effects = get_field('effects');
+                                ?>
                                 
-                                <h2 class="strain-title">
-                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                </h2>
-                                
-                                <?php if ($genetics) : ?>
-                                    <p class="strain-genetics">
-                                        <strong>Genetics:</strong> <?php echo esc_html($genetics); ?>
-                                    </p>
+                                <?php if ($effects && is_array($effects)) : ?>
+                                    <div class="product-effects">
+                                        <?php foreach (array_slice($effects, 0, 3) as $effect) : ?>
+                                            <span class="effect-tag"><?php echo esc_html($effect); ?></span>
+                                        <?php endforeach; ?>
+                                    </div>
                                 <?php endif; ?>
                                 
-                                <div class="strain-excerpt">
-                                    <?php the_excerpt(); ?>
-                                </div>
-                                
-                                <div class="strain-footer">
-                                    <div class="product-count">
-                                        <?php printf(
-                                            _n('%d Product', '%d Products', $product_count, 'skyworld-cannabis'),
-                                            $product_count
-                                        ); ?>
+                                <?php if ($genetics) : ?>
+                                    <div class="product-description">
+                                        <strong>Genetics:</strong> <?php echo esc_html($genetics); ?>
+                                        <?php if ($thc_content || $cbd_content) : ?>
+                                            <br><strong>Cannabinoids:</strong>
+                                            <?php if ($thc_content) : ?>THC <?php echo esc_html($thc_content); ?>%<?php endif; ?>
+                                            <?php if ($thc_content && $cbd_content) : ?> • <?php endif; ?>
+                                            <?php if ($cbd_content) : ?>CBD <?php echo esc_html($cbd_content); ?>%<?php endif; ?>
+                                        <?php endif; ?>
                                     </div>
-                                    
-                                    <a href="<?php the_permalink(); ?>" class="strain-link">
-                                        Learn More <span class="arrow">→</span>
-                                    </a>
-                                </div>
-                            </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            
+                            <a href="<?php the_permalink(); ?>" class="view-product-btn">View Details</a>
                         </div>
                     </article>
-                    <?php
-                endwhile;
-                wp_reset_postdata();
-            else :
-                ?>
-                <div class="no-strains">
-                    <p>No strains found. Check back soon for our latest genetics!</p>
+                <?php endwhile; ?>
+            <?php else : ?>
+                <div class="no-products">
+                    <p>No strains found. Check back soon for updates!</p>
                 </div>
-                <?php
-            endif;
-            ?>
+            <?php endif; ?>
         </div>
-        
-        <?php if ($strains_query->found_posts === 0) : ?>
-            <div class="empty-state">
-                <h3>No Strains Available</h3>
-                <p>We're constantly adding new strains to our collection. Check back soon!</p>
-            </div>
-        <?php endif; ?>
     </div>
 </main>
+
+<script>
+// Filter functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            productCards.forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const badge = card.querySelector('.product-badge');
+                    if (badge && badge.textContent.toLowerCase().includes(filter.toLowerCase())) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+});
+</script>
+
+<?php get_footer(); ?>
 
 <script>
 // Strain filtering functionality

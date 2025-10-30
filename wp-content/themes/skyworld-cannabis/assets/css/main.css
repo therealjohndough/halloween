@@ -1311,3 +1311,409 @@
         height: 250px;
     }
 }
+
+/* ============================================
+   ENHANCED ARCHIVE PAGES
+   ============================================ */
+
+/* Archive Hero */
+.archive-hero {
+    padding: 150px 50px 80px;
+    text-align: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
+    border-bottom: 2px solid #1a1a1a;
+}
+
+.archive-hero h1 {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: #f15b27;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.archive-hero p {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 18px;
+    color: #aaa;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Filter Section */
+.filter-section {
+    padding: 40px 50px;
+    background: #0a0a0a;
+    border-bottom: 1px solid #1a1a1a;
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+}
+
+.filter-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-label {
+    color: #aaa;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 10px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background: transparent;
+    color: #aaa;
+    border: 2px solid #333;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #f15b27;
+    color: #000;
+    border-color: #f15b27;
+}
+
+.product-count {
+    color: #666;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 14px;
+    margin-left: auto;
+}
+
+/* Products Archive */
+.products-archive {
+    padding: 80px 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.product-card {
+    background: #0a0a0a;
+    border: 2px solid #1a1a1a;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    border-color: #f15b27;
+    box-shadow: 0 15px 40px rgba(241, 91, 39, 0.2);
+}
+
+.product-image {
+    width: 100%;
+    height: 320px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f15b27;
+    color: #000;
+    padding: 5px 12px;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-info {
+    padding: 25px;
+}
+
+.product-name {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #f15b27;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-effects {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.effect-tag {
+    padding: 5px 12px;
+    background: rgba(241, 91, 39, 0.1);
+    border: 1px solid #f15b27;
+    color: #f15b27;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 12px;
+}
+
+.product-description {
+    color: #aaa;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.view-product-btn {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: #f15b27;
+    border: 2px solid #f15b27;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.view-product-btn:hover {
+    background: #f15b27;
+    color: #000;
+}
+
+/* ============================================
+   ENHANCED SINGLE PRODUCT PAGES
+   ============================================ */
+
+/* Product Container */
+.product-container {
+    max-width: 1400px;
+    margin: 120px auto 80px;
+    padding: 0 50px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    margin-bottom: 30px;
+    color: #666;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: #f15b27;
+}
+
+.breadcrumb span {
+    margin: 0 10px;
+}
+
+/* Product Main */
+.product-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 80px;
+}
+
+/* Product Image Section */
+.product-image-section {
+    position: relative;
+}
+
+.product-main-image {
+    width: 100%;
+    height: 600px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.product-thumbnails {
+    display: flex;
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    background: #1a1a1a;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+    border: 2px solid #f15b27;
+}
+
+/* Product Details */
+.product-details h1 {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: #f15b27;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.product-genetics {
+    color: #aaa;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.product-specs {
+    background: #0a0a0a;
+    border: 2px solid #1a1a1a;
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.spec-row:last-child {
+    border-bottom: none;
+}
+
+.spec-label {
+    font-family: 'SkyFont', sans-serif;
+    font-weight: 600;
+    color: #aaa;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.spec-value {
+    font-family: 'SkyFont', sans-serif;
+    color: #fff;
+    font-weight: 700;
+}
+
+.find-store-btn {
+    width: 100%;
+    padding: 20px;
+    background: #f15b27;
+    color: #000;
+    border: none;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.find-store-btn:hover {
+    background: #54a5db;
+    transform: translateY(-3px);
+}
+
+/* Responsive Enhancements */
+@media (max-width: 1024px) {
+    .archive-hero h1 {
+        font-size: 48px;
+    }
+    
+    .product-main {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .filter-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .archive-hero {
+        padding: 120px 20px 60px;
+    }
+    
+    .archive-hero h1 {
+        font-size: 36px;
+    }
+    
+    .filter-section {
+        padding: 20px;
+    }
+    
+    .products-archive {
+        padding: 40px 20px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .product-container {
+        padding: 0 20px;
+        margin: 100px auto 40px;
+    }
+    
+    .product-details h1 {
+        font-size: 32px;
+    }
+}

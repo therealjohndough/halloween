@@ -53,6 +53,59 @@ function skyworld_fallback_menu() {
 add_action('after_setup_theme', 'skyworld_theme_setup');
 
 /**
+ * Get Hero Slider Data
+ */
+function skyworld_get_hero_slider_data() {
+    return [
+        [
+            'card_id' => 1,
+            'badge_text' => 'OUR STORY',
+            'headline' => 'PREMIUM INDOOR CULTIVATION',
+            'subheadline' => 'Born from a passion for the plant',
+            'description' => 'True indoor growing. Maximum trichome development. Uncompromising quality, rooted in New York.',
+            'button_text' => 'LEARN MORE',
+            'button_link' => '/about/'
+        ],
+        [
+            'card_id' => 2,
+            'badge_text' => 'NEW MERCH JUST DROPPED',
+            'headline' => 'SKYWORLD APPAREL',
+            'subheadline' => 'Rep the brand. Wear the legacy.',
+            'description' => 'Premium streetwear meets cannabis culture. Official SkyWorld collection available now.',
+            'button_text' => 'SHOP NOW',
+            'button_link' => 'https://skyworldgallery.com/collections/skyworld-merch'
+        ],
+        [
+            'card_id' => 3,
+            'badge_text' => 'ROOTED IN TRADITION',
+            'headline' => 'INDIGENOUS-OWNED',
+            'subheadline' => 'Honoring our heritage. Elevating the craft.',
+            'description' => 'From the Tuscarora tradition of Skyworld—a sacred place of origin and return. We cultivate with intention and purpose.',
+            'button_text' => 'OUR STORY',
+            'button_link' => '/about/'
+        ],
+        [
+            'card_id' => 4,
+            'badge_text' => 'EXCLUSIVE STRAINS',
+            'headline' => 'CURATED GENETICS',
+            'subheadline' => 'Strains you won\'t find anywhere else',
+            'description' => 'From Charmz to Garlic Gravity—our hand-selected genetics deliver unmatched flavor, potency, and experience.',
+            'button_text' => 'EXPLORE STRAINS',
+            'button_link' => '/products/'
+        ],
+        [
+            'card_id' => 5,
+            'badge_text' => 'EXCLUSIVE DROP',
+            'headline' => 'HALL OF FLAME',
+            'subheadline' => 'SkyWorld × StayMelo Collaboration',
+            'description' => 'Two legends unite. Limited edition strains and exclusive drops from this groundbreaking partnership.',
+            'button_text' => 'GET NOTIFIED',
+            'button_link' => '/hall-of-flame/'
+        ]
+    ];
+}
+
+/**
  * Enqueue Scripts and Styles
  */
 function skyworld_enqueue_assets() {
