@@ -1,0 +1,70 @@
+[
+  {
+    "key": "group_sw_seo",
+    "title": "SW \u2022 SEO",
+    "fields": [
+      {
+        "key": "field_sw_seo_title",
+        "label": "SEO Title",
+        "name": "seo_title",
+        "type": "text",
+        "instructions": "Optional. Keep under ~60 characters.",
+        "required": 0,
+        "maxlength": 70,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        }
+      },
+      {
+        "key": "field_sw_seo_desc",
+        "label": "Meta Description",
+        "name": "seo_description",
+        "type": "textarea",
+        "instructions": "Optional. Aim for 120\u2013160 characters.",
+        "required": 0,
+        "new_lines": "",
+        "maxlength": 200,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        }
+      },
+      {
+        "key": "field_sw_og_image",
+        "label": "OG/Twitter Image",
+        "name": "og_image",
+        "type": "image",
+        "instructions": "Optional. 1200\u00d7630 recommended.",
+        "required": 0,
+        "return_format": "id",
+        "preview_size": "medium",
+        "library": "all"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "sw-strain"
+        }
+      ],
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "sw-product"
+        }
+      ]
+    ],
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Optional per\u2011page SEO overrides."
+  }
+]

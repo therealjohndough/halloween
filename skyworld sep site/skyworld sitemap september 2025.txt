@@ -1,0 +1,39 @@
+                                 +---------------------+
+                                 |     Homepage (/)     |
+                                 +---------+-----------+
+                                           |
+                                           |
+        +-------------+      +--------------+---------------+      +-----------------------+      +-----------------------+
+        | Age Gate    |----->| Welcome Section (ACF)       |----->| Featured Products (ACF |----->| Brand Story Snippet   |
+        | (Initial    |      +--------------+---------------+      | - Links to Flower CPT) |      | (ACF)                 |
+        | entry point)|                                            +-----------------------+      +-----------------------+
+        +-------------+                                                     |
+                                                                            |
+        +---------------------------+                       +-------------------------------------+
+        | Store Locator Preview/Link|--------------------->| Call to Actions (e.g., "Explore...") |
+        +---------------------------+                       +-------------------------------------+
+                                           |       |       |       |
+                                           v       v       v       v
+   +-----------------------+   +-----------------------+   +---------------------------+   +---------------------+
+   | Our Flower (/our-flower/)|   | Our Story (/our-story/)|   | Where to Find Us          |   | Contact Us (/contact/)|
+   |(CPT UI: flower -       )|   |(Standard Page)       )|   | (/where-to-find-us/)      |   |(Standard Page)      )|
+   |(Archive Page)          )|   +-----------------------+   |(Standard Page)           )|   +---------------------+
+   +---------+---------------+                               +---------------------------+
+             |
+             | (Displays all strains, Filtering/Sorting (Potentially ACF))
+             v
+   +-------------------------------+   +-------------------------------+   +-------------------------------+
+   | /our-flower/strain-name-1/   |   | /our-flower/strain-name-2/   |   | /our-flower/strain-name-3/   |
+   |(CPT UI: flower - Single Post)|   |(CPT UI: flower - Single Post)|   |(CPT UI: flower - Single Post)|
+   |+-----------------------------+|   |+-----------------------------+|   |+-----------------------------+|
+   || Strain Name & Image        ||   || Strain Name & Image        ||   || Strain Name & Image        ||
+   || Strain Description         ||   || Strain Description         ||   || Strain Description         ||
+   || (ACF) Key Attributes       ||   || (ACF) Key Attributes       ||   || (ACF) Key Attributes       ||
+   || (ACF) Terpene Visualization||   || (ACF) Terpene Visualization||   || (ACF) Terpene Visualization||
+   || "Cultivated With Love" (ACF)||   || "Cultivated With Love" (ACF)||   || "Cultivated With Love" (ACF)||
+   || "Find [Strain] Near You"   ||   || "Find [Strain] Near You"   ||   || "Find [Strain] Near You"   ||
+   || (ACF) Quality Assurance (COA)||   || (ACF) Quality Assurance (COA)||   || (ACF) Quality Assurance (COA)||
+   |+-----------------------------+|   |+-----------------------------+|   |+-----------------------------+|
+             ^                             ^                             ^
+             |                             |                             |
+             +-----------------------------+-----------------------------+
