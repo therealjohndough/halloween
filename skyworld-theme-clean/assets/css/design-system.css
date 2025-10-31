@@ -1,0 +1,1215 @@
+/**
+ * Skyworld Cannabis Design System
+ * Based on Mast Framework principles with Skyworld branding and cannabis industry flair
+ * Colors: #FF8C00 orange, pure blacks, sophisticated greys
+ */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+   ============================================ */
+
+:root {
+  /* Primary Colors */
+  --skyworld-orange: #FF8C00;
+  --skyworld-orange-light: #FFA500;
+  --skyworld-orange-dark: #E07B00;
+  
+  /* Neutrals - Pure blacks and sophisticated greys */
+  --color-black: #000000;
+  --color-dark-gray: #1a1a1a;
+  --color-mid-gray: #666666;
+  --color-light-gray: #cccccc;
+  --color-off-white: #f8f8f8;
+  --color-white: #ffffff;
+  
+  /* Cannabis Industry Accent Colors */
+  --cannabis-green: #2d5016;
+  --cannabis-green-light: #4a7c2a;
+  --terpene-purple: #6b46c1;
+  --lab-blue: #1e40af;
+  --premium-gold: #d4af37;
+  
+  /* Semantic Colors */
+  --color-primary: var(--skyworld-orange);
+  --color-secondary: var(--color-black);
+  --color-success: var(--cannabis-green);
+  --color-info: var(--lab-blue);
+  --color-warning: var(--premium-gold);
+  --color-danger: #dc2626;
+  
+  /* Background Colors */
+  --bg-primary: var(--skyworld-orange);
+  --bg-secondary: var(--color-black);
+  --bg-dark: var(--color-dark-gray);
+  --bg-light: var(--color-off-white);
+  --bg-white: var(--color-white);
+  
+  /* Text Colors */
+  --text-primary: var(--skyworld-orange);
+  --text-black: var(--color-black);
+  --text-dark: var(--color-dark-gray);
+  --text-mid: var(--color-mid-gray);
+  --text-light: var(--color-light-gray);
+  --text-white: var(--color-white);
+  
+  /* Typography */
+  --font-primary: 'SkyFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-secondary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Font Weights */
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+  
+  /* Font Sizes */
+  --fs-xs: 0.75rem;     /* 12px */
+  --fs-sm: 0.875rem;    /* 14px */
+  --fs-base: 1rem;      /* 16px */
+  --fs-lg: 1.125rem;    /* 18px */
+  --fs-xl: 1.25rem;     /* 20px */
+  --fs-2xl: 1.5rem;     /* 24px */
+  --fs-3xl: 1.875rem;   /* 30px */
+  --fs-4xl: 2.25rem;    /* 36px */
+  --fs-5xl: 3rem;       /* 48px */
+  --fs-6xl: 3.75rem;    /* 60px */
+  
+  /* Line Heights */
+  --lh-tight: 1.25;
+  --lh-snug: 1.375;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.625;
+  --lh-loose: 2;
+  
+  /* Spacing Scale */
+  --space-0: 0;
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 1rem;     /* 16px */
+  --space-md: 2rem;     /* 32px */
+  --space-lg: 3rem;     /* 48px */
+  --space-xl: 4rem;     /* 64px */
+  --space-2xl: 6rem;    /* 96px */
+  --space-3xl: 8rem;    /* 128px */
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Shadows with Cannabis Industry Flair */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 20px rgba(255, 140, 0, 0.3);
+  --shadow-cannabis: 0 8px 32px rgba(45, 80, 22, 0.2);
+  
+  /* Glass Morphism Shadows */
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.37);
+  --shadow-glass-lg: 0 25px 50px rgba(0, 0, 0, 0.25);
+  --shadow-glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  /* Glass Morphism Backgrounds */
+  --glass-bg-light: rgba(255, 255, 255, 0.1);
+  --glass-bg-dark: rgba(0, 0, 0, 0.2);
+  --glass-bg-orange: rgba(255, 140, 0, 0.15);
+  --glass-bg-cannabis: rgba(45, 80, 22, 0.15);
+  --glass-bg-terpene: rgba(107, 70, 193, 0.15);
+  
+  /* Glass Morphism Borders */
+  --glass-border-light: rgba(255, 255, 255, 0.2);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+  --glass-border-orange: rgba(255, 140, 0, 0.3);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+  font-family: var(--font-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-normal);
+  line-height: var(--lh-normal);
+  color: var(--text-white);
+  background-color: var(--bg-secondary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================================
+   TYPOGRAPHY SYSTEM
+   ============================================ */
+
+/* Headings */
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  text-wrap: balance;
+}
+
+h1, .h1 {
+  font-size: var(--fs-5xl);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.02em;
+}
+
+h2, .h2 {
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+}
+
+h3, .h3 {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+}
+
+h4, .h4 {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-semibold);
+}
+
+h5, .h5 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+}
+
+h6, .h6 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+}
+
+/* Body Text Variants */
+.paragraph-xl {
+  font-size: var(--fs-xl);
+  line-height: var(--lh-relaxed);
+  color: var(--text-light);
+}
+
+.paragraph-lg {
+  font-size: var(--fs-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text-light);
+}
+
+p, .paragraph {
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--text-light);
+  margin-bottom: var(--space-sm);
+  text-wrap: pretty;
+}
+
+.paragraph-sm {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--text-mid);
+}
+
+/* Cannabis Industry Typography Elements */
+.eyebrow {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.strain-name {
+  font-family: var(--font-primary);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-black);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-xs);
+}
+
+.terpene-label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--terpene-purple);
+  font-family: var(--font-secondary);
+}
+
+.thc-percentage {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-black);
+  color: var(--cannabis-green-light);
+  font-family: var(--font-secondary);
+}
+
+/* Lists */
+ol, ul {
+  padding-left: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+li {
+  margin-bottom: var(--space-xs);
+  color: var(--text-light);
+}
+
+ul li {
+  list-style-type: none;
+  position: relative;
+}
+
+ul li::before {
+  content: "•";
+  color: var(--text-primary);
+  position: absolute;
+  left: -1.2em;
+  font-weight: bold;
+}
+
+/* Cannabis-themed list markers */
+.cannabis-list li::before {
+  content: "🌿";
+  font-size: var(--fs-sm);
+}
+
+.feature-list li::before {
+  content: "✓";
+  color: var(--cannabis-green-light);
+  font-weight: bold;
+}
+
+/* Links */
+a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: all var(--transition-fast);
+}
+
+a:hover {
+  color: var(--skyworld-orange-light);
+  text-decoration-color: var(--skyworld-orange-light);
+}
+
+/* ============================================
+   COLOR UTILITIES
+   ============================================ */
+
+/* Background Colors */
+.u-bg-primary { background-color: var(--bg-primary); }
+.u-bg-secondary { background-color: var(--bg-secondary); }
+.u-bg-black { background-color: var(--color-black); }
+.u-bg-dark { background-color: var(--color-dark-gray); }
+.u-bg-mid { background-color: var(--color-mid-gray); }
+.u-bg-light { background-color: var(--color-light-gray); }
+.u-bg-white { background-color: var(--color-white); }
+.u-bg-cannabis { background-color: var(--cannabis-green); }
+.u-bg-terpene { background-color: var(--terpene-purple); }
+.u-bg-lab { background-color: var(--lab-blue); }
+.u-bg-premium { background-color: var(--premium-gold); }
+
+/* Text Colors */
+.u-text-primary { color: var(--text-primary); }
+.u-text-black { color: var(--text-black); }
+.u-text-dark { color: var(--text-dark); }
+.u-text-mid { color: var(--text-mid); }
+.u-text-light { color: var(--text-light); }
+.u-text-white { color: var(--text-white); }
+.u-text-cannabis { color: var(--cannabis-green-light); }
+.u-text-terpene { color: var(--terpene-purple); }
+.u-text-lab { color: var(--lab-blue); }
+.u-text-premium { color: var(--premium-gold); }
+
+/* Color Modes */
+.u-mode-base {
+  background-color: var(--bg-secondary);
+  color: var(--text-white);
+}
+
+.u-mode-invert {
+  background-color: var(--bg-white);
+  color: var(--text-black);
+}
+
+.u-mode-accent1 {
+  background-color: var(--bg-primary);
+  color: var(--text-black);
+}
+
+.u-mode-accent2 {
+  background-color: var(--cannabis-green);
+  color: var(--text-white);
+}
+
+/* Matte Black Mode - Ultra-clean pure black aesthetic */
+.u-mode-matte-black {
+  background-color: var(--color-black);
+  color: var(--text-white);
+  border: 1px solid var(--color-black);
+}
+
+.u-mode-matte-black * {
+  border-color: var(--color-black);
+}
+
+.u-mode-matte-black .strain-tag {
+  background: var(--color-black);
+  border: 2px solid var(--color-black);
+  color: var(--text-primary);
+}
+
+.u-mode-matte-black .effect-tag {
+  background: var(--color-black);
+  border: 1px solid var(--color-black);
+  color: var(--text-light);
+}
+
+.u-mode-matte-black .cannabinoid-indicator {
+  background: var(--color-black);
+  border: 2px solid var(--color-black);
+}
+
+.u-mode-matte-black .terpene-bar {
+  background: var(--color-black);
+  border: 1px solid var(--color-black);
+}
+
+/* ============================================
+   SPACING UTILITIES
+   ============================================ */
+
+/* Margins */
+.u-m-0 { margin: var(--space-0); }
+.u-mt-0 { margin-top: var(--space-0); }
+.u-mb-0 { margin-bottom: var(--space-0); }
+.u-mt-xs { margin-top: var(--space-xs); }
+.u-mb-xs { margin-bottom: var(--space-xs); }
+.u-mt-sm { margin-top: var(--space-sm); }
+.u-mb-sm { margin-bottom: var(--space-sm); }
+.u-mt-md { margin-top: var(--space-md); }
+.u-mb-md { margin-bottom: var(--space-md); }
+.u-mt-lg { margin-top: var(--space-lg); }
+.u-mb-lg { margin-bottom: var(--space-lg); }
+.u-mt-xl { margin-top: var(--space-xl); }
+.u-mb-xl { margin-bottom: var(--space-xl); }
+.u-mlr-auto { margin-left: auto; margin-right: auto; }
+.u-mt-auto { margin-top: auto; }
+.u-mb-auto { margin-bottom: auto; }
+
+/* Padding */
+.u-p-0 { padding: var(--space-0); }
+.u-pt-0 { padding-top: var(--space-0); }
+.u-pb-0 { padding-bottom: var(--space-0); }
+.u-pt-xs { padding-top: var(--space-xs); }
+.u-pb-xs { padding-bottom: var(--space-xs); }
+.u-pt-sm { padding-top: var(--space-sm); }
+.u-pb-sm { padding-bottom: var(--space-sm); }
+.u-pt-md { padding-top: var(--space-md); }
+.u-pb-md { padding-bottom: var(--space-md); }
+.u-pt-lg { padding-top: var(--space-lg); }
+.u-pb-lg { padding-bottom: var(--space-lg); }
+
+/* ============================================
+   TEXT UTILITIES
+   ============================================ */
+
+/* Alignment */
+.u-text-left { text-align: left; }
+.u-text-center { text-align: center; }
+.u-text-right { text-align: right; }
+
+/* Text Clamping */
+.u-text-clamp-1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+}
+
+.u-text-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.u-text-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+/* Text Wrapping */
+.u-text-balance { text-wrap: balance; }
+.u-text-pretty { text-wrap: pretty; }
+
+/* ============================================
+   DISPLAY & LAYOUT UTILITIES
+   ============================================ */
+
+.u-d-none { display: none; }
+.u-d-block { display: block; }
+.u-d-flex { display: flex; }
+.u-d-inline-flex { display: inline-flex; }
+
+.u-position-relative { position: relative; }
+.u-position-sticky { position: sticky; }
+.u-position-absolute { position: absolute; }
+.u-position-fixed { position: fixed; }
+
+.u-overflow-hidden { overflow: hidden; }
+.u-overflow-visible { overflow: visible; }
+
+.u-w-100 { width: 100%; }
+.u-h-100 { height: 100%; }
+.u-minh-100vh { min-height: 100vh; }
+
+/* Aspect Ratios */
+.u-aspect-1x1 {
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+
+.u-aspect-16x9 {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.u-aspect-4x3 {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+
+/* ============================================
+   COMPONENT HELPERS
+   ============================================ */
+
+.u-img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.u-link-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.u-z-index-1 { z-index: 1; }
+.u-z-index-2 { z-index: 2; }
+.u-z-index-3 { z-index: 3; }
+
+.u-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.u-border {
+  border: 1px solid var(--color-light-gray);
+}
+
+.u-border-primary {
+  border: 2px solid var(--color-primary);
+}
+
+.u-border-cannabis {
+  border: 2px solid var(--cannabis-green-light);
+}
+
+.u-border-matte-black {
+  border: 2px solid var(--color-black);
+}
+
+.u-border-black-outline {
+  border: 1px solid var(--color-black);
+  outline: 1px solid var(--color-black);
+}
+
+/* Matte Black Utility Classes */
+.u-matte-black-card {
+  background: var(--color-black);
+  border: 1px solid var(--color-black);
+  color: var(--text-white);
+  box-shadow: 0 0 0 1px var(--color-black);
+}
+
+.u-matte-black-button {
+  background: var(--color-black);
+  border: 2px solid var(--color-black);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.u-matte-black-button:hover {
+  background: var(--color-dark-gray);
+  border-color: var(--color-primary);
+  color: var(--text-primary);
+}
+
+/* Glass Morphism Utility Classes */
+.u-glass {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--shadow-glass);
+}
+
+.u-glass-dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border-dark);
+  box-shadow: var(--shadow-glass);
+}
+
+.u-glass-orange {
+  background: var(--glass-bg-orange);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border-orange);
+  box-shadow: var(--shadow-glow);
+}
+
+.u-glass-cannabis {
+  background: var(--glass-bg-cannabis);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(45, 80, 22, 0.3);
+  box-shadow: var(--shadow-cannabis);
+}
+
+.u-glass-terpene {
+  background: var(--glass-bg-terpene);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(107, 70, 193, 0.3);
+  box-shadow: 0 8px 32px rgba(107, 70, 193, 0.2);
+}
+
+/* Glass Morphism Card Components */
+.glass-card {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-glass);
+  transition: all var(--transition-base);
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glass-lg);
+  border-color: var(--glass-border-orange);
+}
+
+.glass-card-dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border-dark);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Glass Morphism Navigation */
+.glass-nav {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border-dark);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Glass Morphism Button */
+.glass-button {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-white);
+  font-weight: var(--fw-medium);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.glass-button:hover {
+  background: var(--glass-bg-orange);
+  border-color: var(--glass-border-orange);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow);
+}
+
+.u-full-height-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* ============================================
+   GRID SYSTEM
+   ============================================ */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 calc(var(--space-sm) * -0.5);
+}
+
+.col {
+  flex: 1;
+  padding: 0 calc(var(--space-sm) * 0.5);
+}
+
+/* Grid Columns */
+.col-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+.col-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+.col-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+.col-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+.col-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* Row Modifiers */
+.row-align-center { align-items: center; }
+.row-align-end { align-items: flex-end; }
+.row-justify-center { justify-content: center; }
+.row-justify-end { justify-content: flex-end; }
+.row-justify-around { justify-content: space-around; }
+.row-justify-between { justify-content: space-between; }
+
+.row-gap-0 { gap: 0; }
+.row-gap-sm { gap: var(--space-sm); }
+.row-gap-md { gap: var(--space-md); }
+
+.col-shrink { flex: 0 0 auto; }
+
+/* ============================================
+   CANNABIS INDUSTRY SPECIFIC COMPONENTS
+   ============================================ */
+
+/* Strain Tags */
+.strain-tag {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  background: rgba(255, 140, 0, 0.1);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.strain-tag:hover {
+  background: var(--color-primary);
+  color: var(--text-black);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Glass Morphism Strain Tags */
+.strain-tag-glass {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--glass-bg-orange);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border-orange);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-glass);
+}
+
+.strain-tag-glass:hover {
+  background: rgba(255, 140, 0, 0.3);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Effect Tags */
+.effect-tag {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--cannabis-green);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-white);
+  margin: 0 var(--space-xs) var(--space-xs) 0;
+}
+
+/* THC/CBD Indicators */
+.cannabinoid-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  background: rgba(107, 70, 193, 0.1);
+  border: 1px solid var(--terpene-purple);
+  border-radius: var(--radius-md);
+}
+
+/* Glass Morphism Cannabinoid Indicators */
+.cannabinoid-indicator-glass {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  background: var(--glass-bg-terpene);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(107, 70, 193, 0.3);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px rgba(107, 70, 193, 0.2);
+  transition: all var(--transition-base);
+}
+
+.cannabinoid-indicator-glass:hover {
+  background: rgba(107, 70, 193, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 40px rgba(107, 70, 193, 0.3);
+}
+
+.cannabinoid-label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--terpene-purple);
+}
+
+.cannabinoid-value {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--text-white);
+}
+
+/* Lab Results Badge */
+.lab-tested-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--lab-blue);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-white);
+}
+
+.lab-tested-badge::before {
+  content: "🔬";
+  font-size: var(--fs-base);
+}
+
+/* Glass Morphism Lab Badge */
+.lab-tested-badge-glass {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: rgba(30, 64, 175, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(30, 64, 175, 0.3);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-white);
+  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.2);
+  transition: all var(--transition-base);
+}
+
+.lab-tested-badge-glass::before {
+  content: "🔬";
+  font-size: var(--fs-base);
+}
+
+.lab-tested-badge-glass:hover {
+  background: rgba(30, 64, 175, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 40px rgba(30, 64, 175, 0.3);
+}
+
+/* Premium Badge */
+.premium-badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--premium-gold);
+  color: var(--text-black);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-md);
+}
+
+/* Terpene Meter */
+.terpene-meter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: var(--space-xs) 0;
+}
+
+.terpene-name {
+  flex: 0 0 120px;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-light);
+}
+
+.terpene-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--color-dark-gray);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.terpene-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--terpene-purple), var(--color-primary));
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+
+.terpene-percentage {
+  flex: 0 0 50px;
+  text-align: right;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+}
+
+/* Cannabis Leaf Decorative Element */
+.cannabis-accent {
+  position: relative;
+}
+
+.cannabis-accent::before {
+  content: "🌿";
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  font-size: var(--fs-lg);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+  :root {
+    --fs-5xl: 2.5rem;
+    --fs-4xl: 2rem;
+    --fs-3xl: 1.5rem;
+  }
+  
+  .container {
+    padding: 0 var(--space-sm);
+  }
+  
+  .u-md-d-none { display: none; }
+  .u-md-d-block { display: block; }
+  
+  /* Make columns stack on tablet */
+  .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+  .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  :root {
+    --fs-5xl: 2rem;
+    --fs-4xl: 1.75rem;
+    --fs-3xl: 1.25rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+  }
+  
+  .u-sm-d-none { display: none; }
+  .u-sm-d-block { display: block; }
+  
+  /* Stack all columns on mobile */
+  .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* ============================================
+   ANIMATIONS & TRANSITIONS
+   ============================================ */
+
+/* Subtle cannabis-themed animations */
+@keyframes cannabis-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 140, 0, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(255, 140, 0, 0.6); }
+}
+
+@keyframes terpene-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes leaf-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+.animate-glow {
+  animation: cannabis-glow 3s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: terpene-pulse 2s ease-in-out infinite;
+}
+
+.animate-sway {
+  animation: leaf-sway 4s ease-in-out infinite;
+}
+
+/* Hover effects with cannabis flair */
+.hover-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.hover-glow {
+  transition: box-shadow var(--transition-base);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Glass Morphism Product Cards */
+.product-card-glass {
+  position: relative;
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border-dark);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-glass);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.product-card-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border-light), transparent);
+  opacity: 0.5;
+}
+
+.product-card-glass:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glass-lg);
+  border-color: var(--glass-border-orange);
+}
+
+.product-card-glass:hover::before {
+  background: linear-gradient(90deg, transparent, var(--glass-border-orange), transparent);
+}
+
+/* Glass Morphism Navigation Bar */
+.navbar-glass {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid var(--glass-border-dark);
+  box-shadow: var(--shadow-glass);
+  z-index: var(--z-sticky);
+  transition: all var(--transition-base);
+}
+
+.navbar-glass.scrolled {
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: var(--shadow-glass-lg);
+}
+
+/* Glass Morphism Modal/Overlay */
+.modal-glass {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glass-lg);
+}
+
+/* Glass Morphism Terpene Meter Enhancement */
+.terpene-meter-glass {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: var(--space-xs) 0;
+  padding: var(--space-sm);
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border-dark);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.terpene-meter-glass:hover {
+  background: var(--glass-bg-terpene);
+  border-color: rgba(107, 70, 193, 0.3);
+}
+
+.terpene-meter-glass .terpene-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.terpene-meter-glass .terpene-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--terpene-purple), var(--color-primary));
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+  box-shadow: 0 0 10px rgba(107, 70, 193, 0.5);
+}
+
+/* Glass Morphism Focus States */
+.glass-card:focus,
+.glass-button:focus,
+.strain-tag-glass:focus,
+.cannabinoid-indicator-glass:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-glow), var(--shadow-glass);
+}
+
+/* Focus states for accessibility */
+*:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+button:focus,
+a:focus {
+  outline-color: var(--color-primary);
+}
+
+/* Print styles */
+@media print {
+  * { 
+    background: transparent !important; 
+    color: black !important; 
+    box-shadow: none !important;
+  }
+  
+  .u-print-hide { display: none !important; }
+}

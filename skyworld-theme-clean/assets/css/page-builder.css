@@ -1,0 +1,850 @@
+/**
+ * Skyworld Cannabis - Page Builder Block Styles
+ * Using exact user-provided styling with #FF8C00 orange and black theme
+ */
+
+/* ============================================
+   PAGE BUILDER CORE STYLES
+   ============================================ */
+
+.page-builder-content {
+    background: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.pb-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.pb-error {
+    background: #333;
+    border: 2px solid #ff4444;
+    padding: 20px;
+    margin: 20px 0;
+    color: #ff4444;
+    font-family: monospace;
+}
+
+.page-builder-empty {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.pb-instructions {
+    color: #aaa;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   HERO SECTION BLOCK
+   ============================================ */
+
+.hero-section-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, var(--hero-overlay-opacity, 0.6));
+    z-index: 1;
+}
+
+.hero-content-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.hero-headline {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.1;
+}
+
+.hero-subhead {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-cta {
+    display: inline-block;
+    padding: 18px 50px;
+    font-family: 'SkyFont', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+}
+
+.hero-cta-primary {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.hero-cta-primary:hover {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+.hero-cta-secondary {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+.hero-cta-secondary:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Mobile Hero Styles */
+@media (max-width: 768px) {
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subhead {
+        font-size: 1rem;
+    }
+    
+    .hero-cta-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-cta {
+        padding: 15px 40px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* ============================================
+   BRAND STATEMENT BLOCK
+   ============================================ */
+
+.brand-statement-container {
+    padding: 80px 0;
+    background: var(--secondary-color);
+}
+
+.brand-headline {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.brand-statement-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.layout-text-center .brand-statement-content,
+.layout-text-full .brand-statement-content {
+    flex-direction: column;
+    text-align: center;
+}
+
+.layout-text-right .brand-statement-content {
+    flex-direction: row-reverse;
+}
+
+.brand-content.split-layout {
+    flex: 1;
+}
+
+.brand-content.full-width {
+    width: 100%;
+}
+
+.brand-text {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.brand-text p {
+    margin-bottom: 1.5rem;
+}
+
+.brand-text strong {
+    color: var(--primary-color);
+}
+
+.brand-image.split-layout {
+    flex: 0 0 40%;
+}
+
+.brand-statement-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Brand Statement */
+@media (max-width: 768px) {
+    .brand-statement-container {
+        padding: 60px 0;
+    }
+    
+    .brand-headline {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .brand-statement-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .brand-content.split-layout,
+    .brand-image.split-layout {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* ============================================
+   CONTENT BLOCK
+   ============================================ */
+
+.content-block-wrapper {
+    padding: 80px 0;
+    background: var(--secondary-color);
+}
+
+.content-headline {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.content-subtitle {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.content-block-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+.content-block-main.full-width .content-text-area {
+    width: 100%;
+}
+
+.content-block-main.has-image .content-text-area {
+    flex: 1;
+}
+
+.content-block-main.has-image .content-image-area {
+    flex: 0 0 40%;
+}
+
+.content-text {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.content-text p {
+    margin-bottom: 1.5rem;
+}
+
+.content-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.feature-icon {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex: 0 0 auto;
+}
+
+.feature-text {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.content-cta {
+    margin-top: 2rem;
+}
+
+.content-cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    font-family: 'SkyFont', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.content-cta-button:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.content-block-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Content Block */
+@media (max-width: 768px) {
+    .content-block-wrapper {
+        padding: 60px 0;
+    }
+    
+    .content-headline {
+        font-size: 2rem;
+    }
+    
+    .content-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .content-block-main {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .content-block-main.has-image .content-text-area,
+    .content-block-main.has-image .content-image-area {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* ============================================
+   FOUNDER BIO BLOCK
+   ============================================ */
+
+.founder-bio-wrapper {
+    padding: 80px 0;
+    background: #0a0a0a;
+}
+
+.founder-bio-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.founder-bio-content.text-only {
+    justify-content: center;
+}
+
+.founder-photo-area {
+    flex: 0 0 300px;
+}
+
+.founder-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.founder-info-area {
+    flex: 1;
+}
+
+.founder-name {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.founder-title {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.founder-bio-text {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.founder-bio-text p {
+    margin-bottom: 1.5rem;
+}
+
+/* Mobile Founder Bio */
+@media (max-width: 768px) {
+    .founder-bio-wrapper {
+        padding: 60px 0;
+    }
+    
+    .founder-bio-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .founder-photo-area {
+        flex: none;
+        max-width: 250px;
+    }
+    
+    .founder-name {
+        font-size: 2rem;
+    }
+    
+    .founder-title {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   STRAIN PROFILE BLOCK
+   ============================================ */
+
+.strain-profile-wrapper {
+    padding: 80px 0;
+    background: var(--secondary-color);
+}
+
+.strain-profile-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.strain-name {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.strain-type {
+    display: inline-block;
+    padding: 8px 20px;
+    font-family: 'SkyFont', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 20px;
+}
+
+.strain-type-indica {
+    background: rgba(75, 0, 130, 0.2);
+    border: 2px solid #4B0082;
+    color: #9370DB;
+}
+
+.strain-type-sativa {
+    background: rgba(34, 139, 34, 0.2);
+    border: 2px solid #228B22;
+    color: #32CD32;
+}
+
+.strain-type-hybrid {
+    background: rgba(255, 140, 0, 0.2);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.strain-type-specialty {
+    background: rgba(138, 43, 226, 0.2);
+    border: 2px solid #8A2BE2;
+    color: #DA70D6;
+}
+
+.strain-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 3rem;
+}
+
+.strain-detail-section.full-width {
+    grid-column: 1 / -1;
+}
+
+.detail-label {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.effects-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.effect-tag {
+    padding: 5px 12px;
+    background: rgba(255, 140, 0, 0.1);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-family: 'SkyFont', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 12px;
+}
+
+.terpenes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.terpene-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 6px;
+}
+
+.terpene-name {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.terpene-percentage {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.strain-cultivation-notes {
+    background: #0a0a0a;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.notes-label {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.notes-content {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.notes-content p {
+    margin-bottom: 1rem;
+}
+
+/* Mobile Strain Profile */
+@media (max-width: 768px) {
+    .strain-profile-wrapper {
+        padding: 60px 0;
+    }
+    
+    .strain-name {
+        font-size: 2rem;
+    }
+    
+    .strain-details-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .terpenes-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   CTA SECTION BLOCK
+   ============================================ */
+
+.cta-section-wrapper {
+    padding: 80px 0;
+    position: relative;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.cta-theme-dark {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+.cta-theme-light {
+    background: #f8f8f8;
+    color: #333;
+}
+
+.cta-theme-orange {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.cta-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.cta-section-wrapper .container {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-headline {
+    font-family: 'SkyFont', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-theme-orange .cta-headline {
+    color: var(--secondary-color);
+}
+
+.cta-supporting-text {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.cta-theme-orange .cta-supporting-text {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.cta-buttons-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 18px 50px;
+    font-family: 'SkyFont', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+}
+
+.cta-button-primary {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.cta-button-primary:hover {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+.cta-button-secondary {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+.cta-button-secondary:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.cta-theme-orange .cta-button {
+    border-color: var(--secondary-color);
+}
+
+.cta-theme-orange .cta-button-primary {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.cta-theme-orange .cta-button-primary:hover {
+    background: transparent;
+    color: var(--secondary-color);
+}
+
+.cta-theme-orange .cta-button-secondary {
+    background: transparent;
+    color: var(--secondary-color);
+}
+
+.cta-theme-orange .cta-button-secondary:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* Mobile CTA Section */
+@media (max-width: 768px) {
+    .cta-section-wrapper {
+        padding: 60px 0;
+    }
+    
+    .cta-headline {
+        font-size: 2rem;
+    }
+    
+    .cta-supporting-text {
+        font-size: 1rem;
+    }
+    
+    .cta-buttons-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-button {
+        padding: 15px 40px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* ============================================
+   SHARED UTILITIES
+   ============================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 1240px) {
+    .container {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+}

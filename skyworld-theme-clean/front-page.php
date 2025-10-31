@@ -6,8 +6,11 @@
 
 get_header(); ?>
 
-<!-- ACF-Powered Hero Slider Section -->
-<?php get_template_part('template-parts/hero-slider'); ?>
+<!-- Hero Section -->
+<?php get_template_part('template-parts/hero-section'); ?>
+
+<!-- Press Section -->
+<?php get_template_part('template-parts/press-section'); ?>
 
 <!-- Product Categories Section -->
 <?php get_template_part('template-parts/product-categories'); ?>
