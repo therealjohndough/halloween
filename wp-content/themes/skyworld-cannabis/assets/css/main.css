@@ -1,7 +1,7 @@
 /**
  * Skyworld Cannabis - Main Stylesheet
- * Jeeter-inspired layout with Skyworld branding
- * Colors: Orange #f15b27, Light Blue #54a5db, Black, Grey
+ * Using exact user-provided styling
+ * Colors: Orange #FF8C00, Black #000, Dark greys
  */
 
 /* Logo Styles */
@@ -28,16 +28,33 @@
 }
 
 .logo-text {
-    font-family: 'SkyFont-Black', sans-serif;
-    color: white;
+    font-family: var(--font-primary);
+    color: var(--skyworld-white);
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
     letter-spacing: -0.02em;
-    transition: opacity 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .logo-text:hover {
-    opacity: 0.8;
+    color: var(--skyworld-orange);
+}
+
+/* Logo placeholder matching user's design */
+.site-logo .logo-placeholder {
+    width: 150px;
+    height: 40px;
+    background: var(--skyworld-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--skyworld-black);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
 /* SkyFont Family */
@@ -137,33 +154,56 @@
     font-display: swap;
 }
 
-/* Skyworld Cannabis Theme Styles */
+/* Skyworld Cannabis Theme Styles - User's Original Colors */
 :root {
-    --skyworld-orange: #f15b27;
+    --skyworld-orange: #FF8C00;
     --skyworld-blue: #54a5db;
-    --skyworld-black: #1a1a1a;
+    --skyworld-black: #000000;
     --skyworld-grey: #666666;
-    --skyworld-light-grey: #f5f5f5;
-    --font-primary: 'SkyFont', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-secondary: 'SkyFont', Georgia, serif;
+    --skyworld-light-grey: #1a1a1a;
+    --skyworld-dark-grey: #0a0a0a;
+    --skyworld-border: #222222;
+    --skyworld-white: #ffffff;
+    --font-primary: 'Arial', sans-serif;
+    --font-secondary: 'Arial', sans-serif;
 }
 
-/* Header Styles - Modern Clean */
+/* Base Styles - Matching User's Dark Theme */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--skyworld-black);
+    color: var(--skyworld-white);
+    line-height: 1.6;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+/* Header Styles - User's Design */
 .site-header {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    background: transparent;
-    backdrop-filter: blur(10px);
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     z-index: 1000;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--skyworld-light-grey);
     transition: all 0.3s ease;
-    height: 70px;
-    overflow: hidden;
 }
 
 .site-header.scrolled {
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.98);
     backdrop-filter: blur(20px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
@@ -696,15 +736,17 @@
 
 .btn-modern--primary {
     background: var(--skyworld-orange);
-    color: white;
+    color: var(--skyworld-black);
     border: 2px solid var(--skyworld-orange);
-    box-shadow: 0 4px 12px rgba(241, 91, 39, 0.3);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn-modern--primary:hover {
-    background: #e14a1f;
-    border-color: #e14a1f;
-    box-shadow: 0 6px 16px rgba(241, 91, 39, 0.4);
+    background: transparent;
+    color: var(--skyworld-orange);
+    border-color: var(--skyworld-orange);
     transform: translateY(-2px);
 }
 
@@ -1762,8 +1804,8 @@
 
 .product-card:hover {
     transform: translateY(-10px);
-    border-color: #f15b27;
-    box-shadow: 0 15px 40px rgba(241, 91, 39, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 40px rgba(255, 140, 0, 0.2);
 }
 
 .product-image {
@@ -1784,8 +1826,8 @@
     position: absolute;
     top: 15px;
     right: 15px;
-    background: #f15b27;
-    color: #000;
+    background: var(--primary-color);
+    color: var(--secondary-color);
     padding: 5px 12px;
     font-family: 'SkyFont', sans-serif;
     font-size: 11px;
@@ -1802,7 +1844,7 @@
     font-family: 'SkyFont', sans-serif;
     font-size: 24px;
     font-weight: 700;
-    color: #f15b27;
+    color: var(--primary-color);
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -1817,9 +1859,9 @@
 
 .effect-tag {
     padding: 5px 12px;
-    background: rgba(241, 91, 39, 0.1);
-    border: 1px solid #f15b27;
-    color: #f15b27;
+    background: rgba(255, 140, 0, 0.1);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
     font-family: 'SkyFont', sans-serif;
     font-size: 11px;
     font-weight: 600;
@@ -1839,8 +1881,8 @@
     width: 100%;
     padding: 12px;
     background: transparent;
-    color: #f15b27;
-    border: 2px solid #f15b27;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
     font-family: 'SkyFont', sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -1851,8 +1893,8 @@
 }
 
 .view-product-btn:hover {
-    background: #f15b27;
-    color: #000;
+    background: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 /* ============================================

@@ -62,11 +62,17 @@ wp eval-file wp-content/themes/skyworld-cannabis/import-scripts/wp-cli-import.ph
 'strain_description' => '...'           // Hub content
 ```
 
-### Styling & Brand
-- **Primary Color**: `#F15B27` (Skyworld Orange)
-- **Typography**: SkyFont family integrated via `@font-face`
-- **Mobile-first**: Responsive breakpoints in `assets/css/main.css`
-- **Professional Templates**: Converted from user's HTML designs, not basic alternatives
+### Design System & Brand
+- **Design System**: Complete Mast Framework-inspired system in `assets/css/design-system.css`
+- **Primary Color**: `#FF8C00` (Skyworld Orange) - exact brand color
+- **Color Palette**: Pure blacks (#000000), sophisticated greys, cannabis industry accents
+- **Typography**: SkyFont family + systematic scale (fs-xs to fs-6xl)
+- **Utility Classes**: `u-` prefixed utilities (colors, spacing, layout, text)
+- **Cannabis Components**: Strain tags, terpene meters, cannabinoid indicators, lab badges
+- **Color Modes**: Base, invert, accent1/2, matte-black for ultra-clean aesthetics
+- **Matte Black Mode**: Pure black outlines and elements for premium cannabis aesthetic
+- **Mobile-first**: Responsive breakpoints with utility modifiers (u-md-, u-sm-)
+- **Professional Templates**: Converted from user's HTML designs using design system classes
 
 ## Cannabis Compliance & Business Rules
 
@@ -79,7 +85,29 @@ wp eval-file wp-content/themes/skyworld-cannabis/import-scripts/wp-cli-import.ph
 ### Conversion Strategy
 All product/strain CTAs direct to store locator - never cart or purchase flows. Agile Store Locator plugin manages retailer locations.
 
-## Development Patterns
+### Development Patterns
+
+### Design System Usage
+```php
+// Use design system classes in templates
+<div class="u-mode-matte-black u-p-lg">
+  <h2 class="strain-name"><?php echo esc_html($strain_name); ?></h2>
+  <div class="cannabinoid-indicator">
+    <span class="cannabinoid-label">THC</span>
+    <span class="cannabinoid-value"><?php echo esc_html($thc_percent); ?>%</span>
+  </div>
+</div>
+
+// Cannabis-specific components
+<span class="strain-tag"><?php echo esc_html($strain_type); ?></span>
+<div class="terpene-meter">
+  <span class="terpene-name"><?php echo esc_html($terpene_name); ?></span>
+  <div class="terpene-bar">
+    <div class="terpene-fill" style="width: <?php echo esc_attr($percentage); ?>%"></div>
+  </div>
+  <span class="terpene-percentage"><?php echo esc_html($percentage); ?>%</span>
+</div>
+```
 
 ### Security (WordPress-specific)
 ```php

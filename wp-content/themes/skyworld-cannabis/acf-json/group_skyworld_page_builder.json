@@ -1,0 +1,779 @@
+{
+    "key": "group_skyworld_page_builder",
+    "title": "Skyworld Page Builder Components",
+    "fields": [
+        {
+            "key": "field_pb_flexible_content",
+            "label": "Page Builder Sections",
+            "name": "pb_flexible_content",
+            "type": "flexible_content",
+            "instructions": "Add and arrange page sections. Each section can be reordered by dragging.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_hero_section": {
+                    "key": "layout_hero_section",
+                    "name": "hero_section",
+                    "label": "Hero Section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_hero_headline",
+                            "label": "Headline",
+                            "name": "pb_hero_headline",
+                            "type": "text",
+                            "instructions": "Main hero headline (H1)",
+                            "required": 1,
+                            "default_value": "Premium New York Indoor Cannabis",
+                            "placeholder": "Enter compelling headline",
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_hero_subhead",
+                            "label": "Subheading",
+                            "name": "pb_hero_subhead",
+                            "type": "textarea",
+                            "instructions": "Supporting text below headline",
+                            "required": 0,
+                            "default_value": "Grown with intention. Crafted with respect.",
+                            "placeholder": "Enter subheading text",
+                            "maxlength": 200,
+                            "rows": 3,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_hero_cta_buttons",
+                            "label": "CTA Buttons",
+                            "name": "pb_hero_cta_buttons",
+                            "type": "repeater",
+                            "instructions": "Add up to 2 call-to-action buttons",
+                            "required": 0,
+                            "min": 0,
+                            "max": 2,
+                            "layout": "table",
+                            "button_label": "Add CTA Button",
+                            "sub_fields": [
+                                {
+                                    "key": "field_cta_text",
+                                    "label": "Button Text",
+                                    "name": "pb_cta_text",
+                                    "type": "text",
+                                    "required": 1,
+                                    "default_value": "Explore Our Flower",
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_cta_url",
+                                    "label": "Button URL",
+                                    "name": "pb_cta_url",
+                                    "type": "url",
+                                    "required": 1,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                }
+                            ],
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_hero_background_image",
+                            "label": "Background Image",
+                            "name": "pb_hero_background_image",
+                            "type": "image",
+                            "instructions": "High-resolution hero background image (minimum 1920px wide)",
+                            "required": 0,
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_hero_overlay_opacity",
+                            "label": "Background Overlay Opacity",
+                            "name": "pb_hero_overlay_opacity",
+                            "type": "range",
+                            "instructions": "Dark overlay opacity (0 = no overlay, 100 = completely dark)",
+                            "required": 0,
+                            "default_value": 60,
+                            "min": 0,
+                            "max": 100,
+                            "step": 10,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
+                "layout_brand_statement": {
+                    "key": "layout_brand_statement",
+                    "name": "brand_statement",
+                    "label": "Brand Statement Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_brand_headline",
+                            "label": "Section Headline",
+                            "name": "pb_brand_headline",
+                            "type": "text",
+                            "instructions": "Optional section headline",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_brand_content",
+                            "label": "Brand Statement",
+                            "name": "pb_brand_content",
+                            "type": "wysiwyg",
+                            "instructions": "Main brand statement content with rich text formatting",
+                            "required": 1,
+                            "default_value": "<p>Skyworld is cannabis with a backbone. Born in New York and rooted in Indigenous tradition, we cultivate small-batch indoor flower with purpose—not shortcuts.</p>",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_brand_image",
+                            "label": "Supporting Image",
+                            "name": "pb_brand_image",
+                            "type": "image",
+                            "instructions": "Optional image to accompany brand statement",
+                            "required": 0,
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_brand_layout",
+                            "label": "Layout Style",
+                            "name": "pb_brand_layout",
+                            "type": "radio",
+                            "instructions": "Choose content layout",
+                            "required": 1,
+                            "choices": {
+                                "text-left": "Text Left, Image Right",
+                                "text-right": "Text Right, Image Left",
+                                "text-center": "Text Centered, No Image",
+                                "text-full": "Text Full Width"
+                            },
+                            "default_value": "text-left",
+                            "layout": "horizontal",
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
+                "layout_content_block": {
+                    "key": "layout_content_block",
+                    "name": "content_block",
+                    "label": "Content Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_content_headline",
+                            "label": "Section Headline",
+                            "name": "pb_content_headline",
+                            "type": "text",
+                            "instructions": "Section heading (H2)",
+                            "required": 0,
+                            "placeholder": "Premium Indoor Cultivation",
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_content_subtitle",
+                            "label": "Subtitle",
+                            "name": "pb_content_subtitle",
+                            "type": "text",
+                            "instructions": "Optional subtitle below headline",
+                            "required": 0,
+                            "placeholder": "What We Grow For",
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_content_text",
+                            "label": "Content",
+                            "name": "pb_content_text",
+                            "type": "wysiwyg",
+                            "instructions": "Main content with rich text formatting",
+                            "required": 1,
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_content_image",
+                            "label": "Content Image",
+                            "name": "pb_content_image",
+                            "type": "image",
+                            "instructions": "Optional supporting image",
+                            "required": 0,
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_content_features",
+                            "label": "Feature List",
+                            "name": "pb_content_features",
+                            "type": "repeater",
+                            "instructions": "Add bullet points or feature items",
+                            "required": 0,
+                            "min": 0,
+                            "max": 6,
+                            "layout": "table",
+                            "button_label": "Add Feature",
+                            "sub_fields": [
+                                {
+                                    "key": "field_feature_text",
+                                    "label": "Feature Text",
+                                    "name": "pb_feature_text",
+                                    "type": "text",
+                                    "required": 1,
+                                    "placeholder": "Exclusive genetic selections",
+                                    "wrapper": {
+                                        "width": "80",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_feature_icon",
+                                    "label": "Icon (Optional)",
+                                    "name": "pb_feature_icon",
+                                    "type": "text",
+                                    "instructions": "CSS icon class or emoji",
+                                    "required": 0,
+                                    "placeholder": "✓",
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                }
+                            ],
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_content_cta",
+                            "label": "Call-to-Action Button",
+                            "name": "pb_content_cta",
+                            "type": "group",
+                            "instructions": "Optional CTA button for this section",
+                            "required": 0,
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_content_cta_text",
+                                    "label": "Button Text",
+                                    "name": "pb_content_cta_text",
+                                    "type": "text",
+                                    "required": 0,
+                                    "placeholder": "View COAs",
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_content_cta_url",
+                                    "label": "Button URL",
+                                    "name": "pb_content_cta_url",
+                                    "type": "url",
+                                    "required": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                }
+                            ],
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
+                "layout_founder_bio": {
+                    "key": "layout_founder_bio",
+                    "name": "founder_bio",
+                    "label": "Founder Bio Section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_founder_name",
+                            "label": "Founder Name",
+                            "name": "pb_founder_name",
+                            "type": "text",
+                            "instructions": "Full name of founder",
+                            "required": 1,
+                            "placeholder": "Alex Anderson",
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_founder_title",
+                            "label": "Title & Affiliation",
+                            "name": "pb_founder_title",
+                            "type": "text",
+                            "instructions": "Title and cultural/organizational affiliation",
+                            "required": 1,
+                            "placeholder": "Co-Founder & CEO | Tuscarora Nation",
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_founder_bio",
+                            "label": "Biography",
+                            "name": "pb_founder_bio",
+                            "type": "wysiwyg",
+                            "instructions": "Founder biography with rich text formatting",
+                            "required": 1,
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_founder_photo",
+                            "label": "Founder Photo",
+                            "name": "pb_founder_photo",
+                            "type": "image",
+                            "instructions": "Professional portrait photo",
+                            "required": 0,
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
+                "layout_strain_profile": {
+                    "key": "layout_strain_profile",
+                    "name": "strain_profile",
+                    "label": "Strain Profile Section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_strain_name",
+                            "label": "Strain Name",
+                            "name": "pb_strain_name",
+                            "type": "text",
+                            "instructions": "Name of the strain",
+                            "required": 1,
+                            "placeholder": "Stay Puft",
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_strain_type",
+                            "label": "Strain Type",
+                            "name": "pb_strain_type",
+                            "type": "select",
+                            "instructions": "Classification of strain",
+                            "required": 1,
+                            "choices": {
+                                "indica": "Indica",
+                                "sativa": "Sativa",
+                                "hybrid": "Hybrid",
+                                "specialty": "Specialty"
+                            },
+                            "default_value": "hybrid",
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_strain_effects",
+                            "label": "Primary Effects",
+                            "name": "pb_strain_effects",
+                            "type": "checkbox",
+                            "instructions": "Select primary effects (choose 3-5)",
+                            "required": 0,
+                            "choices": {
+                                "calm": "Calm",
+                                "creative": "Creative",
+                                "focused": "Focused",
+                                "euphoric": "Euphoric",
+                                "grounded": "Grounded",
+                                "energetic": "Energetic",
+                                "relaxed": "Relaxed",
+                                "uplifted": "Uplifted",
+                                "happy": "Happy",
+                                "sleepy": "Sleepy"
+                            },
+                            "layout": "horizontal",
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_strain_aroma",
+                            "label": "Aroma & Flavor",
+                            "name": "pb_strain_aroma",
+                            "type": "text",
+                            "instructions": "Describe aroma and flavor profile",
+                            "required": 0,
+                            "placeholder": "Citrus rind, pine resin, sweet earth, gas-leaning funk",
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_strain_lineage",
+                            "label": "Lineage",
+                            "name": "pb_strain_lineage",
+                            "type": "text",
+                            "instructions": "Parent strains (if known)",
+                            "required": 0,
+                            "placeholder": "OG Kush x Gelato",
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_strain_terpenes",
+                            "label": "Terpene Profile",
+                            "name": "pb_strain_terpenes",
+                            "type": "repeater",
+                            "instructions": "Add dominant terpenes",
+                            "required": 0,
+                            "min": 0,
+                            "max": 8,
+                            "layout": "table",
+                            "button_label": "Add Terpene",
+                            "sub_fields": [
+                                {
+                                    "key": "field_terpene_name",
+                                    "label": "Terpene",
+                                    "name": "pb_terpene_name",
+                                    "type": "select",
+                                    "required": 1,
+                                    "choices": {
+                                        "myrcene": "Myrcene",
+                                        "limonene": "Limonene",
+                                        "caryophyllene": "β-Caryophyllene",
+                                        "linalool": "Linalool",
+                                        "pinene": "α-Pinene",
+                                        "humulene": "Humulene",
+                                        "terpinolene": "Terpinolene",
+                                        "ocimene": "Ocimene"
+                                    },
+                                    "wrapper": {
+                                        "width": "70",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_terpene_percentage",
+                                    "label": "Percentage",
+                                    "name": "pb_terpene_percentage",
+                                    "type": "number",
+                                    "instructions": "Percentage (e.g. 0.74)",
+                                    "required": 0,
+                                    "min": 0,
+                                    "max": 5,
+                                    "step": 0.01,
+                                    "wrapper": {
+                                        "width": "30",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                }
+                            ],
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_strain_description",
+                            "label": "Cultivation Notes",
+                            "name": "pb_strain_description",
+                            "type": "wysiwyg",
+                            "instructions": "Notes about cultivation, effects, or character",
+                            "required": 0,
+                            "tabs": "all",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
+                "layout_cta_section": {
+                    "key": "layout_cta_section",
+                    "name": "cta_section",
+                    "label": "Call-to-Action Section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_cta_headline",
+                            "label": "CTA Headline",
+                            "name": "pb_cta_headline",
+                            "type": "text",
+                            "instructions": "Compelling headline for call-to-action",
+                            "required": 1,
+                            "placeholder": "Find Skyworld Near You",
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_cta_text",
+                            "label": "Supporting Text",
+                            "name": "pb_cta_text",
+                            "type": "textarea",
+                            "instructions": "Supporting text below headline",
+                            "required": 0,
+                            "placeholder": "Craft cannabis, cultivated in New York. Available at select licensed dispensaries.",
+                            "maxlength": 300,
+                            "rows": 3,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_cta_buttons",
+                            "label": "CTA Buttons",
+                            "name": "pb_cta_buttons",
+                            "type": "repeater",
+                            "instructions": "Add call-to-action buttons",
+                            "required": 1,
+                            "min": 1,
+                            "max": 3,
+                            "layout": "table",
+                            "button_label": "Add CTA Button",
+                            "sub_fields": [
+                                {
+                                    "key": "field_cta_button_text",
+                                    "label": "Button Text",
+                                    "name": "pb_cta_button_text",
+                                    "type": "text",
+                                    "required": 1,
+                                    "placeholder": "Find Retailers",
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_cta_button_url",
+                                    "label": "Button URL",
+                                    "name": "pb_cta_button_url",
+                                    "type": "url",
+                                    "required": 1,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                },
+                                {
+                                    "key": "field_cta_button_style",
+                                    "label": "Button Style",
+                                    "name": "pb_cta_button_style",
+                                    "type": "select",
+                                    "required": 1,
+                                    "choices": {
+                                        "primary": "Primary (Orange)",
+                                        "secondary": "Secondary (Outline)"
+                                    },
+                                    "default_value": "primary",
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                }
+                            ],
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_cta_background_image",
+                            "label": "Background Image",
+                            "name": "pb_cta_background_image",
+                            "type": "image",
+                            "instructions": "Optional background image for CTA section",
+                            "required": 0,
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_cta_background_color",
+                            "label": "Background Color",
+                            "name": "pb_cta_background_color",
+                            "type": "select",
+                            "instructions": "Background color theme",
+                            "required": 1,
+                            "choices": {
+                                "dark": "Dark Theme",
+                                "light": "Light Theme",
+                                "orange": "Orange Theme"
+                            },
+                            "default_value": "dark",
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                }
+            },
+            "button_label": "Add Section",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-page-builder.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Flexible page builder components for Skyworld Cannabis website. Allows creation of custom page layouts with reusable sections.",
+    "show_in_rest": 0
+}

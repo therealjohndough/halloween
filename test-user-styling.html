@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyworld Cannabis - Updated Styling</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header matching user's design */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            width: 150px;
+            height: 40px;
+            background: #FF8C00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FF8C00;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #FF8C00;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 18px 50px;
+            background: #FF8C00;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid #FF8C00;
+        }
+
+        .hero-cta:hover {
+            background: transparent;
+            color: #FF8C00;
+        }
+
+        /* Product Grid */
+        .products-section {
+            padding: 80px 50px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #FF8C00;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #0a0a0a;
+            border: 2px solid #222;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #FF8C00;
+            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FF8C00;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-effects {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .effect-tag {
+            padding: 5px 12px;
+            background: rgba(255, 140, 0, 0.1);
+            border: 1px solid #FF8C00;
+            color: #FF8C00;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 12px;
+        }
+
+        .product-description {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .view-product-btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            color: #FF8C00;
+            border: 2px solid #FF8C00;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .view-product-btn:hover {
+            background: #FF8C00;
+            color: #000;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .products-section {
+                padding: 60px 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">SKYWORLD</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#strains">Strains</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#locations">Locations</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Premium Cannabis</h1>
+            <p>Discover our collection of premium strains, expertly cultivated for the ultimate cannabis experience. Quality you can trust.</p>
+            <a href="#products" class="hero-cta">Explore Products</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <h2 class="section-title">Our Products</h2>
+        <div class="products-grid">
+            <!-- Sample Product Cards -->
+            <div class="product-card">
+                <div class="product-image">Product Image</div>
+                <div class="product-info">
+                    <h3 class="product-name">Stay Puft</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Relaxed</span>
+                        <span class="effect-tag">Happy</span>
+                        <span class="effect-tag">Euphoric</span>
+                    </div>
+                    <p class="product-description">Premium Indica strain featuring exceptional quality and unique terpene profiles.</p>
+                    <button class="view-product-btn">View Product</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">Product Image</div>
+                <div class="product-info">
+                    <h3 class="product-name">Garlic Gravity</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Energetic</span>
+                        <span class="effect-tag">Focused</span>
+                        <span class="effect-tag">Creative</span>
+                    </div>
+                    <p class="product-description">Balanced Hybrid with potent effects and incredible flavor profile.</p>
+                    <button class="view-product-btn">View Product</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">Product Image</div>
+                <div class="product-info">
+                    <h3 class="product-name">Sherb Cream Pie</h3>
+                    <div class="product-effects">
+                        <span class="effect-tag">Uplifted</span>
+                        <span class="effect-tag">Giggly</span>
+                        <span class="effect-tag">Talkative</span>
+                    </div>
+                    <p class="product-description">Sweet Sativa-dominant strain perfect for daytime enjoyment.</p>
+                    <button class="view-product-btn">View Product</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -63,13 +63,13 @@ foreach ($authentic_strains as $strain_name) {
         'post_type' => 'strains',
         'meta_input' => [
             'strain_type' => $strain_type,
-            'genetics' => $this->getRandomGenetics($strain_name),
+            'genetics' => SkyworldImportHelper::getRandomGenetics($strain_name),
             'terpene_profile' => $terpene_profiles[array_rand($terpene_profiles)],
             'flowering_time' => rand(8, 12) . ' weeks',
             'thc_range' => rand(20, 30) . '% - ' . rand(31, 35) . '%',
             'cbd_range' => '0.1% - 0.5%',
-            'effects' => $this->getStrainEffects($strain_type),
-            'aroma_profile' => $this->getAromaProfile($strain_name),
+            'effects' => SkyworldImportHelper::getStrainEffects($strain_type),
+            'aroma_profile' => SkyworldImportHelper::getAromaProfile($strain_name),
             'cultivation_notes' => 'Indoor hydroponic cultivation with precise environmental controls'
         ]
     ];
@@ -146,7 +146,7 @@ echo "   ✅ Products created: {$product_count}\n";
 
 // Create navigation menus
 echo "\n📱 Setting up navigation...\n";
-$this->createNavigationMenus();
+SkyworldImportHelper::createNavigationMenus();
 
 // Set front page
 $front_page = get_page_by_title('Home');
