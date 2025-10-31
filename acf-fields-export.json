@@ -1,0 +1,331 @@
+[
+  {
+    "key": "group_cannabis_product_fields",
+    "title": "Cannabis Product Fields",
+    "fields": [
+      {
+        "key": "field_strain_name",
+        "label": "Strain Name",
+        "name": "strain_name",
+        "type": "text",
+        "required": 1,
+        "placeholder": "e.g. Stay Puft"
+      },
+      {
+        "key": "field_strain_type",
+        "label": "Strain Type",
+        "name": "strain_type",
+        "type": "select",
+        "required": 1,
+        "choices": {
+          "Indica": "Indica",
+          "Sativa": "Sativa",
+          "Hybrid": "Hybrid"
+        },
+        "default_value": "Hybrid"
+      },
+      {
+        "key": "field_genetics",
+        "label": "Genetics",
+        "name": "genetics",
+        "type": "text",
+        "placeholder": "e.g. Grape Gasoline x Marshmallow OG"
+      },
+      {
+        "key": "field_lineage",
+        "label": "Lineage",
+        "name": "lineage",
+        "type": "text",
+        "placeholder": "Same as genetics - backup field"
+      },
+      {
+        "key": "field_product_category",
+        "label": "Product Category",
+        "name": "product_category",
+        "type": "select",
+        "required": 1,
+        "choices": {
+          "Flower": "Flower",
+          "Pre-roll": "Pre-roll",
+          "Hash Hole": "Hash Hole",
+          "Concentrate": "Concentrate",
+          "Vape": "Vape"
+        }
+      },
+      {
+        "key": "field_package_sizes",
+        "label": "Package Size",
+        "name": "package_sizes",
+        "type": "text",
+        "required": 1,
+        "placeholder": "e.g. 3.5g, 1g, 0.5g 2pk"
+      },
+      {
+        "key": "field_batch_number",
+        "label": "Batch Number",
+        "name": "batch_number",
+        "type": "text",
+        "required": 1,
+        "placeholder": "e.g. SW3725J-SP"
+      },
+      {
+        "key": "field_lab_name",
+        "label": "Lab Name",
+        "name": "lab_name",
+        "type": "text",
+        "default_value": "SJR Horticulture"
+      },
+      {
+        "key": "field_test_date",
+        "label": "Test Date",
+        "name": "test_date",
+        "type": "text",
+        "placeholder": "e.g. March 27, 2025"
+      },
+      {
+        "key": "field_cultivation_notes",
+        "label": "Cultivation Notes",
+        "name": "cultivation_notes",
+        "type": "text",
+        "default_value": "Indoor · Skyworld Standard"
+      },
+      {
+        "key": "field_thc_percent",
+        "label": "THC %",
+        "name": "thc_percent",
+        "type": "number",
+        "min": 0,
+        "max": 100,
+        "step": 0.1,
+        "append": "%"
+      },
+      {
+        "key": "field_cbd_percent",
+        "label": "CBD %",
+        "name": "cbd_percent",
+        "type": "number",
+        "min": 0,
+        "max": 100,
+        "step": 0.1,
+        "append": "%"
+      },
+      {
+        "key": "field_cbg_percent",
+        "label": "CBG %",
+        "name": "cbg_percent",
+        "type": "number",
+        "min": 0,
+        "max": 100,
+        "step": 0.1,
+        "append": "%"
+      },
+      {
+        "key": "field_thcv_percent",
+        "label": "THCV %",
+        "name": "thcv_percent",
+        "type": "number",
+        "min": 0,
+        "max": 100,
+        "step": 0.1,
+        "append": "%"
+      },
+      {
+        "key": "field_terp_total",
+        "label": "Total Terpenes %",
+        "name": "terp_total",
+        "type": "number",
+        "min": 0,
+        "max": 10,
+        "step": 0.01,
+        "append": "%"
+      },
+      {
+        "key": "field_terp1_name",
+        "label": "Primary Terpene Name",
+        "name": "terp1_name",
+        "type": "text",
+        "placeholder": "e.g. Myrcene"
+      },
+      {
+        "key": "field_terp1_percent",
+        "label": "Primary Terpene %",
+        "name": "terp1_percent",
+        "type": "number",
+        "min": 0,
+        "max": 10,
+        "step": 0.01,
+        "append": "%"
+      },
+      {
+        "key": "field_terp2_name",
+        "label": "Secondary Terpene Name",
+        "name": "terp2_name",
+        "type": "text",
+        "placeholder": "e.g. Limonene"
+      },
+      {
+        "key": "field_terp2_percent",
+        "label": "Secondary Terpene %",
+        "name": "terp2_percent",
+        "type": "number",
+        "min": 0,
+        "max": 10,
+        "step": 0.01,
+        "append": "%"
+      },
+      {
+        "key": "field_terp3_name",
+        "label": "Tertiary Terpene Name",
+        "name": "terp3_name",
+        "type": "text",
+        "placeholder": "e.g. Caryophyllene"
+      },
+      {
+        "key": "field_terp3_percent",
+        "label": "Tertiary Terpene %",
+        "name": "terp3_percent",
+        "type": "number",
+        "min": 0,
+        "max": 10,
+        "step": 0.01,
+        "append": "%"
+      },
+      {
+        "key": "field_related_strain",
+        "label": "Related Strain",
+        "name": "related_strain",
+        "type": "post_object",
+        "post_type": [
+          "strain"
+        ],
+        "return_format": "object",
+        "allow_null": 1
+      },
+      {
+        "key": "field_strain_relationship",
+        "label": "Strain Relationship",
+        "name": "strain_relationship",
+        "type": "post_object",
+        "post_type": [
+          "strain"
+        ],
+        "return_format": "object",
+        "allow_null": 1
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "cannabis_product"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label"
+  },
+  {
+    "key": "group_strain_fields",
+    "title": "Strain Fields",
+    "fields": [
+      {
+        "key": "field_strain_strain_type",
+        "label": "Strain Type",
+        "name": "strain_type",
+        "type": "select",
+        "required": 1,
+        "choices": {
+          "Indica": "Indica",
+          "Sativa": "Sativa",
+          "Hybrid": "Hybrid"
+        }
+      },
+      {
+        "key": "field_strain_genetics",
+        "label": "Genetics",
+        "name": "genetics",
+        "type": "text",
+        "placeholder": "Parent strains"
+      },
+      {
+        "key": "field_strain_breeder",
+        "label": "Breeder",
+        "name": "breeder",
+        "type": "text"
+      },
+      {
+        "key": "field_strain_flowering_time",
+        "label": "Flowering Time",
+        "name": "flowering_time",
+        "type": "text",
+        "placeholder": "e.g. 8-9 weeks"
+      },
+      {
+        "key": "field_strain_aroma_profile",
+        "label": "Aroma Profile",
+        "name": "aroma_profile",
+        "type": "textarea"
+      },
+      {
+        "key": "field_strain_flavor_profile",
+        "label": "Flavor Profile",
+        "name": "flavor_profile",
+        "type": "textarea"
+      },
+      {
+        "key": "field_strain_effects",
+        "label": "Effects",
+        "name": "effects",
+        "type": "textarea"
+      },
+      {
+        "key": "field_strain_terpene_profile",
+        "label": "Terpene Profile",
+        "name": "terpene_profile",
+        "type": "textarea"
+      },
+      {
+        "key": "field_strain_thc_content",
+        "label": "Typical THC Content",
+        "name": "thc_content",
+        "type": "text",
+        "placeholder": "e.g. 20-25%"
+      },
+      {
+        "key": "field_strain_cbd_content",
+        "label": "Typical CBD Content",
+        "name": "cbd_content",
+        "type": "text",
+        "placeholder": "e.g. 0.5-1.0%"
+      },
+      {
+        "key": "field_strain_related_products",
+        "label": "Related Products",
+        "name": "related_products",
+        "type": "relationship",
+        "post_type": [
+          "cannabis_product"
+        ],
+        "return_format": "object"
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "strain"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label"
+  }
+]

@@ -1,66 +1,136 @@
-# Global Copilot Instructions (Workspace‑wide)
+# SkyWorld Cannabis WordPress Theme - AI Agent Instructions
 
+## Architecture & Data Model
 
-## Voice & Output
-- Be direct, concise, and practical. Prefer code over explanation.
-- Default to US English. Use present tense, active voice.
-- When generating names, pick descriptive, boring names over clever ones.
-- When creating docs or copy, favor scannable structure: headings, bullets, short paragraphs.
+### Hub-and-Spoke Content Model
+```
+Strain (Hub) ←→ Products (Spokes) → Store Locator (Conversion)
+```
+- **Strains CPT**: `strains` - premium genetics information, cultivation details
+- **Products CPT**: `products` - specific batch-based products linked to strains
+- **Product Categories**: Only 3 types: Flower (3.5g), Pre-roll (various packs), Hash Hole (1g)
+- **Naming Convention**: Products use "Strain + Category + Size" format (e.g., "Stay Puft Pre-roll 0.5g, 2pk")
 
+### Core WordPress Integration
+- **Theme Location**: `wp-content/themes/skyworld-cannabis/`
+- **Custom Post Types**: Registered in `functions.php` with proper capabilities
+- **ACF Dependencies**: Critical - all metadata stored as ACF fields
+- **Taxonomies**: `strain_type` (Indica/Sativa/Hybrid), `product_type`, `effects`
 
-## Coding Stack & Defaults
-- WordPress/PHP: target WP 6.x+, PHP 8.2+. No deprecated functions. Escape output (`esc_html`, `esc_attr`, `wp_kses_post`). Nonces on forms. Use `wp_enqueue_*` for assets. No inline SQL; use `$wpdb->prepare`.
-- JS: vanilla JS or jQuery for WordPress compatibility. ES2022+ syntax when possible. Strict mode (`"use strict"`).
-- CSS: modern CSS first. Use CSS variables and logical properties. Respect prefers‑reduced‑motion.
-- Accessibility: semantic HTML, labels for inputs, keyboard nav, focus states, color contrast >= 4.5:1.
-- Performance: lazy load heavy assets, defer non‑critical JS, preconnect critical origins. Avoid blocking main thread. Target Lighthouse 90+ mobile.
-- Security: never commit secrets. Sanitize inputs, escape outputs. Use prepared statements. Avoid eval/dynamic `Function`.
-- SEO: semantic structure (H1–H3), descriptive titles/meta, `alt` text, canonical links when duplicate paths exist. Use schema markup for Product, Organization, LocalBusiness.
-- Cannabis Compliance: age gates (21+), disclaimers, secondary COA placement, no medical claims, NYS OCM alignment.
-- Business Model: hub-and-spoke content model - no e-commerce, all CTAs drive to store locator for retail partner discovery.
+## Data Sources & Import Workflow
 
+### Authentic Skyworld Data Only
+**Real strains** (never fabricate): Stay Puft, Garlic Gravity, Sherb Cream Pie, Skyworld Wafflez, Dirt n Worms, White Apple Runtz, 41 G, Melted Strawberries, Triple Burger, Charmz, Superboof, Stay Melo, Gushcanna, Lemon Oreoz, Peanut Butter Gelato, Kept Secret
 
-## Git Hygiene
-- Small, atomic commits with imperative summaries (<= 72 chars). Include rationale when non‑obvious.
-- Provide PR descriptions with: context, changes list, risk, test notes.
+### Import System Architecture
+- **CSV Processors**: `import-scripts/skyworld-importer.php` handles strain→product relationships
+- **Batch Numbers**: Primary identifiers (format: SW051925-HH-SPXPR) - critical for COA mapping
+- **COA Integration**: PDFs in `assets/coas/` named by batch number
+- **Data Flow**: CSV → ACF fields → Template display → Store locator conversion
 
+### Development Commands
+```bash
+# Local development server
+cd /path/to/wordpress && php -S localhost:8080
 
-## Tests & QA
-- Generate unit tests for utilities and critical logic. Use PHPUnit for WordPress.
-- Include minimal repro steps in bugfix PR templates.
+# Import data (requires WP-CLI)
+wp eval-file wp-content/themes/skyworld-cannabis/import-scripts/skyworld-importer.php
 
+# Validate ACF fields
+wp eval-file wp-content/themes/skyworld-cannabis/import-scripts/wp-cli-import.php
+```
 
-## Documentation
-- For new features: include a short README section with purpose, usage, and constraints.
-- For public APIs: include JSDoc/PHPDoc with types and param/return descriptions.
+## Theme Architecture
 
+### Template Hierarchy
+- `archive-products.php` / `archive-strains.php` - Professional listing pages with filtering
+- `single-products.php` / `single-strains.php` - Individual product/strain pages
+- `template-parts/product-categories.php` - Homepage product grid (Flower/Pre-roll/Hash Hole)
+- Hub pages link to related spokes via ACF relationship fields
 
-## Style Rules
-- JavaScript: use strict mode, meaningful variable names, avoid global scope pollution.
-- PHP: PSR‑12 formatting, snake_case for WP filters/actions, CamelCase for classes.
+### Critical ACF Fields
+```php
+// Products
+'batch_number' => 'SW051925-HH-SPXPR', // COA mapping key
+'strain_name' => 'Stay Puft',          // Hub relationship
+'thc_percent' => 25.9,                 // Display priority
+'product_type' => 'Hash Hole',         // Category taxonomy
 
+// Strains  
+'genetics' => 'Ice Cream Cake x Sherb BX1',
+'terpene_profile' => 'Myrcene 0.74; Linalool 0.52',
+'strain_description' => '...'           // Hub content
+```
 
-## Do Not
-- Do not add new runtime dependencies without explaining why and impact.
-- Do not scaffold example code that won't compile or run.
-- Do not output secrets, tokens, or private keys. If asked, refuse.
-- Do not use `!important` unless documented justification.
-- **NEVER create fake strain names, product data, or store locations. ALWAYS use authentic Skyworld data from the product inventory CSV files in Project Documents and Data Sources/. Real strains include: Stay Puft, Garlic Gravity, Sherb Cream Pie, Skyworld Wafflez, Dirt n Worms, White Apple Runtz, 41 G, Melted Strawberries, Triple Burger, Charmz, Superboof, Stay Melo, Gushcanna, Lemon Oreoz, Peanut Butter Gelato, Kept Secret - with their actual THC/CBD percentages, terpene profiles, and batch numbers. Store locations are managed exclusively via Agile Store Locator plugin.**
+### Styling & Brand
+- **Primary Color**: `#F15B27` (Skyworld Orange)
+- **Typography**: SkyFont family integrated via `@font-face`
+- **Mobile-first**: Responsive breakpoints in `assets/css/main.css`
+- **Professional Templates**: Converted from user's HTML designs, not basic alternatives
 
+## Cannabis Compliance & Business Rules
 
-## Project Conventions
-- File structure: `src/` for source, `assets/` for static, `includes/` for WP PHP, `templates/` for theme views.
-- Custom Post Types: `strains`, `products` with ACF field groups. Use taxonomies for product_type, size_weight.
-- Relationships: strain ↔ products bidirectional; related products by shared strain.
-- CTAs: all product/strain pages lead to "Find near me" store locator, never direct sales or cart functionality.
-- Media: next-gen formats (WebP/AVIF), lazy loading, video short loops, optional 360° viewers.
-- Maps: Agile Store Locator plugin handles all store/retailer data and mapping - primary conversion goal.
-- Env: `.env` for local only; never commit. Document required ENV keys in README.
+### NY State Requirements
+- Age gate enforcement (21+)
+- COA accessibility (secondary placement)
+- No medical claims or e-commerce functionality
+- NYS OCM license display: "OCM-PROC-24-000030 | OCM-CULT-2023-000179"
 
+### Conversion Strategy
+All product/strain CTAs direct to store locator - never cart or purchase flows. Agile Store Locator plugin manages retailer locations.
 
-## Review Checklist (auto‑apply to generated diffs)
-- [ ] Security: sanitization/escaping
-- [ ] Accessibility: labels, roles, focus order, contrast
-- [ ] Performance: bundle size, lazy loading, network hints
-- [ ] SEO: semantic headings, metadata, `alt`
-- [ ] Tests/docs updated
+## Development Patterns
+
+### Security (WordPress-specific)
+```php
+// Always escape output
+echo esc_html($strain_name);
+echo esc_attr($batch_number);
+
+// Sanitize inputs
+$thc = floatval($_POST['thc_percent']);
+$strain = sanitize_text_field($_POST['strain_name']);
+
+// ACF field updates
+update_field('batch_number', sanitize_text_field($batch), $post_id);
+```
+
+### Performance Priorities
+- Lazy load product images in archives
+- Preconnect to font sources
+- Defer non-critical JS
+- Target Lighthouse 90+ mobile score
+
+### Import Script Patterns
+- Check existing posts before creating: `get_page_by_title($title, OBJECT, 'products')`
+- Build strain-to-product relationships via ACF: `update_field('related_strain', $strain_id, $product_id)`
+- Process terpene JSON: `json_decode($terpene_data, true)`
+
+## Common Debugging
+
+### ACF Field Issues
+```php
+// Verify ACF availability
+if (!function_exists('get_field')) {
+    wp_die('ACF plugin required');
+}
+
+// Debug field values
+var_dump(get_field('batch_number', $post_id));
+```
+
+### Import Troubleshooting
+- **Strain relationships**: Verify strain exists before linking products
+- **Batch numbers**: Must match COA filename format exactly
+- **Product naming**: Follow "Strain + Category + Size" strictly
+
+## File Organization
+```
+wp-content/themes/skyworld-cannabis/
+├── functions.php           # CPT registration, ACF fields
+├── assets/css/main.css     # Professional styling, SkyFont integration  
+├── import-scripts/         # CSV processors, relationship builders
+├── single-products.php     # Converted from user's HTML template
+├── archive-products.php    # Professional listing with filtering
+└── includes/coa-mapping.php # Batch→COA file associations
+```

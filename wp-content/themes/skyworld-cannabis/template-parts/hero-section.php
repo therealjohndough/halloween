@@ -1,130 +1,123 @@
 <?php
 /**
  * Hero Section Template Part
- * Full-width hero with ACF slides, Jeeter-inspired layout
+ * Square-inspired clean, modern hero section
  */
-
-$hero_slides = get_field('hero_slides');
-if (!$hero_slides) return;
 ?>
 
-<section class="hero-section" id="hero">
-    <div class="hero-slider">
-        <?php foreach ($hero_slides as $index => $slide) : 
-            $is_active = $index === 0 ? 'active' : '';
-            $media_type = $slide['slide_media_type'] ?? 'image';
-            $slide_image = $slide['slide_image'] ?? null;
-            $slide_video = $slide['slide_video'] ?? null;
-            $slide_title = $slide['slide_title'] ?? '';
-            $slide_subtitle = $slide['slide_subtitle'] ?? '';
-            $cta_text = $slide['slide_cta_text'] ?? 'Explore Our Flower';
-            $cta_link = $slide['slide_cta_link'] ?? '#';
-        ?>
-            <div class="hero-slide <?php echo esc_attr($is_active); ?>" data-slide="<?php echo esc_attr($index); ?>">
-                <!-- Background Media -->
-                <div class="hero-media">
-                    <?php if ($media_type === 'video' && $slide_video) : ?>
-                        <video 
-                            class="hero-video" 
-                            autoplay 
-                            muted 
-                            loop 
-                            playsinline 
-                            preload="metadata"
-                            poster="<?php echo esc_url($slide_image['sizes']['hero-slide'] ?? $slide_image['url'] ?? ''); ?>"
-                        >
-                            <source src="<?php echo esc_url($slide_video['url']); ?>" type="<?php echo esc_attr($slide_video['mime_type']); ?>">
-                            <!-- Fallback image if video fails -->
-                            <?php if ($slide_image) : ?>
-                                <img src="<?php echo esc_url($slide_image['sizes']['hero-slide'] ?? $slide_image['url']); ?>" 
-                                     alt="<?php echo esc_attr($slide_title); ?>">
-                            <?php endif; ?>
-                        </video>
-                    <?php elseif ($slide_image) : ?>
-                        <img 
-                            src="<?php echo esc_url($slide_image['sizes']['hero-slide'] ?? $slide_image['url']); ?>" 
-                            alt="<?php echo esc_attr($slide_title); ?>"
-                            class="hero-image"
-                            loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>"
-                        >
-                    <?php endif; ?>
-                    
-                    <!-- Overlay for better text readability -->
-                    <div class="hero-overlay"></div>
+<!-- Square-inspired Hero Section -->
+<section class="hero-section-modern" id="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <!-- Left Column: Content -->
+            <div class="hero-content-modern">
+                <div class="hero-badge">
+                    <span class="badge-text">Premium NY Cannabis</span>
                 </div>
                 
-                <!-- Content -->
-                <div class="hero-content">
-                    <div class="container">
-                        <div class="hero-text">
-                            <?php if ($slide_subtitle) : ?>
-                                <p class="hero-subtitle"><?php echo esc_html($slide_subtitle); ?></p>
-                            <?php endif; ?>
-                            
-                            <?php if ($slide_title) : ?>
-                                <h1 class="hero-title"><?php echo esc_html($slide_title); ?></h1>
-                            <?php endif; ?>
-                            
-                            <?php if ($cta_text && $cta_link) : 
-                                $link_url = is_array($cta_link) ? $cta_link['url'] : $cta_link;
-                                $link_target = is_array($cta_link) ? $cta_link['target'] : '_self';
-                            ?>
-                                <div class="hero-cta">
-                                    <a href="<?php echo esc_url($link_url); ?>" 
-                                       class="btn btn--primary btn--large hero-cta-btn"
-                                       target="<?php echo esc_attr($link_target); ?>">
-                                        <?php echo esc_html($cta_text); ?>
-                                    </a>
-                                </div>
-                            <?php endif; ?>
+                <h1 class="hero-title-modern">
+                    The future of cannabis is 
+                    <span class="highlight-text">Skyworld</span>
+                </h1>
+                
+                <p class="hero-description">
+                    Indoor flower, super-premium quality. Love-based cultivation ethos 
+                    meets cutting-edge growing techniques for the ultimate cannabis experience.
+                </p>
+                
+                <div class="hero-cta-group">
+                    <a href="<?php echo get_post_type_archive_link('products') ?: '#products'; ?>" 
+                       class="btn-modern btn-modern--primary">
+                        Explore Products
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9,18 15,12 9,6"></polyline>
+                        </svg>
+                    </a>
+                    
+                    <a href="#store-locator" class="btn-modern btn-modern--outline">
+                        Find Stores
+                    </a>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="hero-trust">
+                    <div class="trust-item">
+                        <span class="trust-number">95+</span>
+                        <span class="trust-label">NY Locations</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-number">100%</span>
+                        <span class="trust-label">Indoor Grown</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-number">Lab</span>
+                        <span class="trust-label">Tested</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column: Visual -->
+            <div class="hero-visual">
+                <div class="visual-container">
+                    <!-- Animated Cannabis Leaf -->
+                    <div class="cannabis-visual">
+                        <svg class="cannabis-leaf" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <g class="leaf-group">
+                                <!-- Central stem -->
+                                <path d="M100 180 L100 120" stroke="var(--skyworld-orange)" stroke-width="3" fill="none"/>
+                                
+                                <!-- Main leaves -->
+                                <path d="M100 120 Q70 100 60 80 Q70 85 100 100 Q130 85 140 80 Q130 100 100 120" 
+                                      fill="var(--skyworld-orange)" opacity="0.8"/>
+                                
+                                <!-- Side leaves -->
+                                <path d="M85 110 Q60 95 50 75 Q65 80 85 95" 
+                                      fill="var(--skyworld-orange)" opacity="0.6"/>
+                                <path d="M115 110 Q140 95 150 75 Q135 80 115 95" 
+                                      fill="var(--skyworld-orange)" opacity="0.6"/>
+                                
+                                <!-- Top leaves -->
+                                <path d="M100 100 Q85 85 75 65 Q90 70 100 85" 
+                                      fill="var(--skyworld-orange)" opacity="0.7"/>
+                                <path d="M100 100 Q115 85 125 65 Q110 70 100 85" 
+                                      fill="var(--skyworld-orange)" opacity="0.7"/>
+                                
+                                <!-- Center leaf -->
+                                <path d="M100 85 Q95 70 90 50 Q100 55 100 70 Q100 55 110 50 Q105 70 100 85" 
+                                      fill="var(--skyworld-orange)" opacity="0.9"/>
+                            </g>
+                        </svg>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="floating-element floating-1">
+                        <div class="float-card">
+                            <span class="float-label">THC</span>
+                            <span class="float-value">25.9%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-element floating-2">
+                        <div class="float-card">
+                            <span class="float-label">Terpenes</span>
+                            <span class="float-value">3.2%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-element floating-3">
+                        <div class="float-card">
+                            <span class="float-label">Premium</span>
+                            <span class="float-value">Indoor</span>
                         </div>
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+        </div>
     </div>
     
-    <!-- Slider Navigation -->
-    <?php if (count($hero_slides) > 1) : ?>
-        <div class="hero-navigation">
-            <div class="container">
-                <!-- Dots Indicator -->
-                <div class="hero-dots">
-                    <?php foreach ($hero_slides as $index => $slide) : 
-                        $is_active = $index === 0 ? 'active' : '';
-                    ?>
-                        <button 
-                            class="hero-dot <?php echo esc_attr($is_active); ?>" 
-                            data-slide="<?php echo esc_attr($index); ?>"
-                            aria-label="Go to slide <?php echo esc_attr($index + 1); ?>"
-                        ></button>
-                    <?php endforeach; ?>
-                </div>
-                
-                <!-- Arrow Navigation -->
-                <button class="hero-arrow hero-arrow--prev" aria-label="Previous slide">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="15,18 9,12 15,6"></polyline>
-                    </svg>
-                </button>
-                <button class="hero-arrow hero-arrow--next" aria-label="Next slide">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9,18 15,12 9,6"></polyline>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    <?php endif; ?>
-    
-    <!-- Scroll Indicator -->
-    <div class="hero-scroll-indicator">
-        <div class="container">
-            <button class="scroll-down-btn" aria-label="Scroll to content">
-                <span class="scroll-text">Scroll</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6,9 12,15 18,9"></polyline>
-                </svg>
-            </button>
-        </div>
+    <!-- Background Gradient -->
+    <div class="hero-background">
+        <div class="gradient-orb gradient-orb-1"></div>
+        <div class="gradient-orb gradient-orb-2"></div>
     </div>
 </section>

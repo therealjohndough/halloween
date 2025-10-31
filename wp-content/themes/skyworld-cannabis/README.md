@@ -7,7 +7,7 @@ This theme is now **plug-and-play ready** for WordPress deployment with your rea
 ## 📦 What's Included
 
 ### Core Theme Files
-- **Complete WordPress theme** with Jeeter-inspired hamburger navigation
+- **Complete WordPress theme** with Square-inspired modern navigation
 - **Hub-and-spoke architecture** (strains as hubs, products as spokes)
 - **Mobile-first responsive design** with Skyworld branding
 - **Age gate compliance** and NY Cannabis regulations
@@ -107,7 +107,7 @@ Store Locator (Conversion Goal)
 ### Brand Colors
 - **Skyworld Orange**: `#f15b27`
 - **Skyworld Blue**: `#54a5db`
-- **Typography**: Montserrat font family
+- **Typography**: 
 
 ## 🔧 Customization
 

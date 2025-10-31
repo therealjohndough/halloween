@@ -474,3 +474,167 @@ function skyworld_excerpt_more($more) {
     return '...';
 }
 add_filter('excerpt_more', 'skyworld_excerpt_more');
+
+/**
+ * Customizer Settings
+ */
+function skyworld_customize_register($wp_customize) {
+    // Logo Section
+    $wp_customize->add_section('skyworld_logo_section', array(
+        'title' => __('Logo Settings', 'skyworld-cannabis'),
+        'priority' => 30,
+        'description' => __('Upload and customize your SVG logo', 'skyworld-cannabis'),
+    ));
+    
+    // SVG Logo Upload
+    $wp_customize->add_setting('skyworld_logo_svg', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize, 'skyworld_logo_svg', array(
+        'label' => __('SVG Logo', 'skyworld-cannabis'),
+        'description' => __('Upload your SVG logo file', 'skyworld-cannabis'),
+        'section' => 'skyworld_logo_section',
+        'settings' => 'skyworld_logo_svg',
+    )));
+    
+    // Logo Size
+    $wp_customize->add_setting('skyworld_logo_size', array(
+        'default' => 180,
+        'sanitize_callback' => 'absint',
+    ));
+    
+    $wp_customize->add_control('skyworld_logo_size', array(
+        'type' => 'range',
+        'label' => __('Logo Size (px)', 'skyworld-cannabis'),
+        'description' => __('Adjust the width of your logo', 'skyworld-cannabis'),
+        'section' => 'skyworld_logo_section',
+        'input_attrs' => array(
+            'min' => 80,
+            'max' => 400,
+            'step' => 10,
+        ),
+    ));
+    
+    // Logo Color
+    $wp_customize->add_setting('skyworld_logo_color', array(
+        'default' => '#ffffff',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'skyworld_logo_color', array(
+        'label' => __('Logo Color', 'skyworld-cannabis'),
+        'description' => __('Choose the color for your SVG logo', 'skyworld-cannabis'),
+        'section' => 'skyworld_logo_section',
+        'settings' => 'skyworld_logo_color',
+    )));
+    
+    // Logo Mobile Size
+    $wp_customize->add_setting('skyworld_logo_mobile_size', array(
+        'default' => 140,
+        'sanitize_callback' => 'absint',
+    ));
+    
+    $wp_customize->add_control('skyworld_logo_mobile_size', array(
+        'type' => 'range',
+        'label' => __('Mobile Logo Size (px)', 'skyworld-cannabis'),
+        'description' => __('Adjust the width of your logo on mobile devices', 'skyworld-cannabis'),
+        'section' => 'skyworld_logo_section',
+        'input_attrs' => array(
+            'min' => 60,
+            'max' => 300,
+            'step' => 10,
+        ),
+    ));
+}
+add_action('customize_register', 'skyworld_customize_register');
+
+/**
+ * Output custom logo styles
+ */
+function skyworld_logo_custom_styles() {
+    $logo_size = get_theme_mod('skyworld_logo_size', 180);
+    $logo_mobile_size = get_theme_mod('skyworld_logo_mobile_size', 140);
+    $logo_color = get_theme_mod('skyworld_logo_color', '#ffffff');
+    
+    ?>
+    <style type="text/css">
+        .custom-logo-svg {
+            width: <?php echo esc_attr($logo_size); ?>px;
+            height: auto;
+            fill: <?php echo esc_attr($logo_color); ?>;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-logo-svg path,
+        .custom-logo-svg g,
+        .custom-logo-svg polygon,
+        .custom-logo-svg circle,
+        .custom-logo-svg rect {
+            fill: <?php echo esc_attr($logo_color); ?>;
+        }
+        
+        .site-logo a {
+            display: block;
+            line-height: 1;
+        }
+        
+        .logo-text {
+            font-family: 'SkyFont-Black', sans-serif;
+            font-size: 2rem;
+            color: <?php echo esc_attr($logo_color); ?>;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        @media (max-width: 768px) {
+            .custom-logo-svg {
+                width: <?php echo esc_attr($logo_mobile_size); ?>px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Hover effects */
+        .site-logo a:hover .custom-logo-svg {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+        
+        .site-logo a:hover .logo-text {
+            opacity: 0.8;
+        }
+    </style>
+    <?php
+}
+add_action('wp_head', 'skyworld_logo_custom_styles');
+
+/**
+ * Custom logo function that handles SVG
+ */
+function skyworld_custom_logo() {
+    $custom_logo_svg = get_theme_mod('skyworld_logo_svg');
+    $custom_logo_id = get_theme_mod('custom_logo');
+    
+    if ($custom_logo_svg) {
+        // Use custom SVG logo
+        $svg_content = file_get_contents($custom_logo_svg);
+        if ($svg_content) {
+            // Add custom class to SVG
+            $svg_content = str_replace('<svg', '<svg class="custom-logo-svg"', $svg_content);
+            echo '<a href="' . esc_url(home_url('/')) . '" class="custom-logo-link">' . $svg_content . '</a>';
+        }
+    } elseif ($custom_logo_id) {
+        // Use standard WordPress custom logo
+        the_custom_logo();
+    } else {
+        // Fallback to text logo
+        echo '<a href="' . esc_url(home_url('/')) . '" class="logo-text">' . get_bloginfo('name') . '</a>';
+    }
+}
+
+// Include SEO enhancements
+require_once get_template_directory() . '/includes/seo-enhancements.php';

@@ -19,13 +19,7 @@
             <div class="header-content">
                 <!-- Logo -->
                 <div class="site-logo">
-                    <?php if (has_custom_logo()) : ?>
-                        <?php the_custom_logo(); ?>
-                    <?php else : ?>
-                        <a href="<?php echo esc_url(home_url('/')); ?>" class="logo-text">
-                            <?php bloginfo('name'); ?>
-                        </a>
-                    <?php endif; ?>
+                    <?php skyworld_custom_logo(); ?>
                 </div>
                 
                 <!-- Hamburger Navigation (All Devices) -->

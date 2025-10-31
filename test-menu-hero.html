@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyworld Cannabis - Test</title>
+    <link rel="stylesheet" href="wp-content/themes/skyworld-cannabis/assets/css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        :root {
+            --skyworld-orange: #F15B27;
+            --skyworld-light-blue: #54A5DB;
+            --skyworld-black: #000000;
+            --skyworld-white: #ffffff;
+            --skyworld-grey: #666666;
+            --font-heading: 'SkyFont', Arial, sans-serif;
+            --font-body: 'SkyFont', Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Quick test styles */
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="site-logo">
+                    <a href="#" class="logo-text">SKYWORLD</a>
+                </div>
+                
+                <!-- Hamburger Navigation -->
+                <div class="header-actions">
+                    <!-- Search Icon -->
+                    <button class="search-toggle" aria-label="Search">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="21 21l-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Hamburger Menu Button -->
+                    <button class="hamburger-toggle" aria-label="Menu" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+                
+                <!-- Full Screen Menu Overlay -->
+                <div class="menu-overlay" id="menu-overlay">
+                    <div class="menu-content">
+                        <div class="menu-main">
+                            <nav class="main-navigation" role="navigation">
+                                <ul class="nav-menu mobile-nav">
+                                    <li><a href="#home">Home</a></li>
+                                    <li><a href="#products">Products</a></li>
+                                    <li><a href="#strains">Strains</a></li>
+                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#contact">Contact</a></li>
+                                    <li><a href="#store-locator">Store Locator</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        
+                        <div class="menu-sidebar">
+                            <!-- Search Bar -->
+                            <div class="menu-search">
+                                <form class="search-form" role="search">
+                                    <input type="search" placeholder="Search Skyworld" class="search-input">
+                                    <button type="submit" class="search-submit" aria-label="Search">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <path d="21 21l-4.35-4.35"></path>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                            
+                            <!-- Brand Footer -->
+                            <div class="menu-footer">
+                                <div class="brand-tagline">
+                                    <p>Premium New York Cannabis</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-slider">
+            <!-- Slide 1 -->
+            <div class="hero-slide active" data-slide="0">
+                <div class="hero-media">
+                    <div class="hero-overlay"></div>
+                </div>
+                
+                <div class="hero-content">
+                    <div class="container">
+                        <div class="hero-text">
+                            <p class="hero-subtitle">Skyworld Cannabis</p>
+                            <h1 class="hero-title">Premium New York Cannabis</h1>
+                            <div class="hero-cta">
+                                <a href="#products" class="btn btn--primary btn--large hero-cta-btn">
+                                    Explore Our Flower
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="hero-slide" data-slide="1">
+                <div class="hero-media">
+                    <div class="hero-overlay"></div>
+                </div>
+                
+                <div class="hero-content">
+                    <div class="container">
+                        <div class="hero-text">
+                            <p class="hero-subtitle">Featured Strains</p>
+                            <h1 class="hero-title">Stay Puft & Garlic Gravity</h1>
+                            <div class="hero-cta">
+                                <a href="#strains" class="btn btn--primary btn--large hero-cta-btn">
+                                    Shop Strains
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="hero-slide" data-slide="2">
+                <div class="hero-media">
+                    <div class="hero-overlay"></div>
+                </div>
+                
+                <div class="hero-content">
+                    <div class="container">
+                        <div class="hero-text">
+                            <p class="hero-subtitle">95+ Store Locations</p>
+                            <h1 class="hero-title">Find Skyworld Near You</h1>
+                            <div class="hero-cta">
+                                <a href="#store-locator" class="btn btn--primary btn--large hero-cta-btn">
+                                    Store Locator
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slider Navigation -->
+        <div class="hero-navigation">
+            <div class="container">
+                <!-- Dots Indicator -->
+                <div class="hero-dots">
+                    <button class="hero-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                    <button class="hero-dot" data-slide="1" aria-label="Go to slide 2"></button>
+                    <button class="hero-dot" data-slide="2" aria-label="Go to slide 3"></button>
+                </div>
+                
+                <!-- Arrow Navigation -->
+                <button class="hero-arrow hero-arrow--prev" aria-label="Previous slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15,18 9,12 15,6"></polyline>
+                    </svg>
+                </button>
+                <button class="hero-arrow hero-arrow--next" aria-label="Next slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="hero-scroll-indicator">
+            <div class="container">
+                <button class="scroll-down-btn" aria-label="Scroll to content">
+                    <span class="scroll-text">Scroll</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Test content -->
+    <div style="padding: 4rem 2rem; text-align: center;">
+        <h2>Test Page</h2>
+        <p>This is a test page to verify the menu and hero slider functionality.</p>
+        <p><strong>Menu should slide in from the right when hamburger is clicked.</strong></p>
+        <p><strong>Hero slides should auto-advance every 5 seconds.</strong></p>
+    </div>
+
+    <script src="wp-content/themes/skyworld-cannabis/assets/js/main.js"></script>
+</body>
+</html>
