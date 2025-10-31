@@ -1,0 +1,46 @@
+{
+  "folders": [
+    {
+      "name": "Skyworld Cannabis Theme",
+      "path": "./wp-content/themes/skyworld-cannabis"
+    },
+    {
+      "name": "Import Scripts",
+      "path": "./import-scripts"
+    },
+    {
+      "name": "Documentation",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "*.php": "php"
+    },
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "php.validate.enable": true,
+    "php.suggest.basic": true,
+    "files.exclude": {
+      "**/.git": false,
+      "**/node_modules": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.git": true,
+      "**/wp-admin": true,
+      "**/wp-includes": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "bmewburn.vscode-intelephense-client",
+      "ms-vscode.vscode-json",
+      "bradlc.vscode-tailwindcss",
+      "formulahendry.auto-rename-tag",
+      "ms-vscode.live-server"
+    ]
+  }
+}

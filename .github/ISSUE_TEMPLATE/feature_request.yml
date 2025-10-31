@@ -1,0 +1,121 @@
+name: Feature Request
+description: Suggest a new feature for the Skyworld Cannabis theme
+title: "[FEATURE] "
+labels: ["enhancement", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ✨ Feature Request
+        
+        Suggest new functionality for the Skyworld Cannabis WordPress theme.
+        All features must comply with cannabis industry regulations.
+
+  - type: checkboxes
+    id: compliance-check
+    attributes:
+      label: Cannabis Compliance Verification
+      description: Confirm this feature meets industry standards
+      options:
+        - label: This feature maintains age gate requirements (21+)
+          required: true
+        - label: This feature does not include e-commerce functionality
+          required: true
+        - label: This feature does not make medical/therapeutic claims
+          required: true
+        - label: This feature directs users to licensed retailers only
+          required: true
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: What type of feature is this?
+      options:
+        - Design System Enhancement
+        - New Cannabis Component
+        - Glass Morphism Effects
+        - Strain/Product Display
+        - Mobile Experience
+        - Performance Optimization
+        - SEO/Analytics
+        - Compliance Feature
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: Describe the feature you'd like to see added
+      placeholder: |
+        **Feature Overview:**
+        Add a new terpene profile visualization component that shows...
+        
+        **Why this feature is needed:**
+        Customers want to understand terpene profiles better...
+        
+        **How it should work:**
+        The component should display terpene names, percentages, and...
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User Story
+      description: Describe this feature from the user's perspective
+      placeholder: |
+        As a cannabis customer visiting the Skyworld website,
+        I want to see detailed terpene profiles for each strain,
+        So that I can make informed decisions about products.
+    validations:
+      required: true
+
+  - type: textarea
+    id: design-requirements
+    attributes:
+      label: Design Requirements
+      description: Describe visual and interaction requirements
+      placeholder: |
+        **Visual Design:**
+        - Use glass morphism effects consistent with theme
+        - Skyworld orange (#FF8C00) accent colors
+        - Matte black mode compatibility
+        
+        **Interactions:**
+        - Hover effects on terpene bars
+        - Mobile-friendly touch interactions
+        
+        **Components:**
+        - .terpene-profile-glass component
+        - .terpene-bar-interactive sub-component
+
+  - type: textarea
+    id: technical-considerations
+    attributes:
+      label: Technical Implementation
+      description: Any technical requirements or considerations
+      placeholder: |
+        **WordPress Integration:**
+        - ACF fields for terpene data storage
+        - Custom shortcode for easy insertion
+        
+        **Performance:**
+        - Lazy loading for complex visualizations
+        - Mobile optimization
+        
+        **Browser Support:**
+        - Modern browsers with CSS backdrop-filter support
+        - Graceful fallbacks for older browsers
+
+  - type: checkboxes
+    id: feature-checklist
+    attributes:
+      label: Feature Request Checklist
+      options:
+        - label: This feature enhances the cannabis customer experience
+        - label: This feature maintains professional brand standards
+        - label: This feature is technically feasible within WordPress
+        - label: This feature follows the existing design system
+        - label: I have checked that this feature doesn't already exist

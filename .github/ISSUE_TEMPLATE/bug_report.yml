@@ -1,0 +1,104 @@
+name: Bug Report
+description: Report a bug or issue with the Skyworld Cannabis theme
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐛 Bug Report
+        
+        Thank you for reporting a bug in the Skyworld Cannabis WordPress theme.
+        Please provide detailed information to help us resolve the issue quickly.
+
+  - type: checkboxes
+    id: compliance-check
+    attributes:
+      label: Cannabis Compliance Check
+      description: Verify this isn't a compliance-related issue
+      options:
+        - label: This bug does not involve age gate functionality
+        - label: This bug does not affect NY State OCM license display
+        - label: This bug does not impact store locator conversion flow
+
+  - type: dropdown
+    id: bug-type
+    attributes:
+      label: Bug Category
+      description: What type of bug is this?
+      options:
+        - Design System Issue
+        - Glass Morphism Effects
+        - Cannabis Component Display
+        - WordPress Functionality
+        - Mobile Responsiveness
+        - Performance Issue
+        - Security Concern
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Clearly describe the bug and what you expected to happen
+      placeholder: |
+        **What happened:**
+        The strain tag glass morphism effect is not displaying properly...
+        
+        **What should happen:**
+        The strain tag should show glass morphism with backdrop blur...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Provide step-by-step instructions to reproduce the bug
+      placeholder: |
+        1. Navigate to strain detail page
+        2. Scroll to strain information section
+        3. Notice the missing glass effect on strain tags
+        4. Check browser console for errors
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Information
+      description: Technical details about your setup
+      placeholder: |
+        - WordPress Version: 6.3
+        - Theme Version: 1.0.0
+        - PHP Version: 8.1
+        - Browser: Chrome 118
+        - Device: Desktop/Mobile
+        - ACF Pro Version: 6.2
+    validations:
+      required: true
+
+  - type: textarea
+    id: console-errors
+    attributes:
+      label: Console Errors
+      description: Copy any JavaScript console errors or PHP error logs
+      render: text
+      placeholder: |
+        // JavaScript Console Errors
+        Uncaught TypeError: Cannot read property 'classList' of null
+        
+        // PHP Error Logs
+        PHP Fatal error: Call to undefined function...
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Bug Report Checklist
+      options:
+        - label: I have searched existing issues for duplicates
+        - label: I have tested this on a clean WordPress installation
+        - label: I have verified ACF Pro plugin is active and updated
+        - label: I have checked browser console for JavaScript errors
+        - label: I have confirmed this affects the production theme files

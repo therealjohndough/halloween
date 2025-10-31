@@ -1,4 +1,4 @@
-# WordPress
+# WordPress Core
 wp-config.php
 wp-content/uploads/
 wp-content/cache/
@@ -9,41 +9,28 @@ wp-content/blogs.dir/
 wp-content/upgrade/
 wp-content/backup-db/
 wp-content/backups/
-wp-content/blogs.dir/
+
+# Environment files
+.env
+.env.local
+.env.production
 
 # Log files
 *.log
 error_log
 access_log
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
+# Development files
+node_modules/
+*.zip
+*.tar.gz
+*.sql
 
 # Temporary files
 *.tmp
 *.temp
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# PHP temp files
-create_images.php
-create_product_images.php
-create_real_images.php
+*.disabled
+*.bak
 
 # OS generated files
 .DS_Store
@@ -54,3 +41,22 @@ create_real_images.php
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# IDE files
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# PHP temp files
+create_images.php
+create_product_images.php
+create_real_images.php
+
+# Cannabis compliance (keep secure)
+/wp-content/themes/skyworld-cannabis/assets/coas/*.pdf
+
+# Large files (use Git LFS)
+*.zip
+wp-content/themes/skyworld-cannabis.zip
